@@ -1,0 +1,11 @@
+Log-file of program C:\Users\hinack\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\dymosim.exe
+(generated: Sun Oct 28 14:29:13 2018)
+
+dymosim.exe started
+Runtime license not available, trying to check out the Dymola Standard license instead.
+
+License from "dymola.lic" could not be checked out. 
+License file not found.
+
+
+You can specify the location of the license file through the environment variable "DYMOLA_RUNTIME_LICENSE"
