@@ -1,0 +1,17 @@
+MODULES_MANAGER_V2
+Modelica4PapyrusUML.UML_ClassDiagram_Interface|C:\Users\sven hinrichs\Desktop\ADoCSM\Automated_Documentation\Modelica4PapyrusUML\UML_ClassDiagram_Interface.py
+Modelica4PapyrusUML.__init__|C:\Users\sven hinrichs\Desktop\ADoCSM\Automated_Documentation\Modelica4PapyrusUML\__init__.py
+UML_Diagram.ActivityDiagram_Interface|C:\Users\sven hinrichs\Desktop\ADoCSM\Automated_Documentation\UML_Diagram\ActivityDiagram_Interface.py
+UML_Diagram.ClassDiagram|C:\Users\sven hinrichs\Desktop\ADoCSM\Automated_Documentation\UML_Diagram\ClassDiagram.py
+UML_Diagram.GUI_Interface|C:\Users\sven hinrichs\Desktop\ADoCSM\Automated_Documentation\UML_Diagram\GUI_Interface.py
+UML_Diagram.General|C:\Users\sven hinrichs\Desktop\ADoCSM\Automated_Documentation\UML_Diagram\General.py
+UML_Diagram.Internal_Block_Diagram_Interface|C:\Users\sven hinrichs\Desktop\ADoCSM\Automated_Documentation\UML_Diagram\Internal_Block_Diagram_Interface.py
+UML_Diagram.ModelManagement|C:\Users\sven hinrichs\Desktop\ADoCSM\Automated_Documentation\UML_Diagram\ModelManagement.py
+UML_Diagram.Object_Oriented_Relations|C:\Users\sven hinrichs\Desktop\ADoCSM\Automated_Documentation\UML_Diagram\Object_Oriented_Relations.py
+UML_Diagram.Python_Modelica_Interface|C:\Users\sven hinrichs\Desktop\ADoCSM\Automated_Documentation\UML_Diagram\Python_Modelica_Interface.py
+UML_Diagram.UML_GUI|C:\Users\sven hinrichs\Desktop\ADoCSM\Automated_Documentation\UML_Diagram\UML_GUI.py
+UML_Diagram.UML_Interface|C:\Users\sven hinrichs\Desktop\ADoCSM\Automated_Documentation\UML_Diagram\UML_Interface.py
+UML_Diagram.UML_Library|C:\Users\sven hinrichs\Desktop\ADoCSM\Automated_Documentation\UML_Diagram\UML_Library.py
+UML_Diagram.Version|C:\Users\sven hinrichs\Desktop\ADoCSM\Automated_Documentation\UML_Diagram\Version.py
+UML_Diagram.probe|C:\Users\sven hinrichs\Desktop\ADoCSM\Automated_Documentation\UML_Diagram\probe.py
+UML_Diagram.windows|C:\Users\sven hinrichs\Desktop\ADoCSM\Automated_Documentation\UML_Diagram\windows.py

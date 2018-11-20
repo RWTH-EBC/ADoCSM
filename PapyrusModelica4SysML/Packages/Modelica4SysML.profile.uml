@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_zAFOIN93Eei2AdFulrt0aQ" name="Modelica4SysML" metaclassReference="_znYesN93Eei2AdFulrt0aQ _cPCu8OAqEeiE5fsQKgIaEQ _FO9zoeAsEeiE5fsQKgIaEQ">
+  <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_znl6EN93Eei2AdFulrt0aQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_pdolReAsEeiE5fsQKgIaEQ" name="Modelica4SysML" nsURI="http:///schemas/Modelica4SysML/_pdolROAsEeiE5fsQKgIaEQ/3" nsPrefix="Modelica4SysML">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pdolWuAsEeiE5fsQKgIaEQ" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pdolW-AsEeiE5fsQKgIaEQ" key="Version" value="0.0.4"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pdolXOAsEeiE5fsQKgIaEQ" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pdolXeAsEeiE5fsQKgIaEQ" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pdolXuAsEeiE5fsQKgIaEQ" key="Date" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pdolX-AsEeiE5fsQKgIaEQ" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_pdolRuAsEeiE5fsQKgIaEQ" name="Partial">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pdolR-AsEeiE5fsQKgIaEQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_znWCcN93Eei2AdFulrt0aQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_pdolSOAsEeiE5fsQKgIaEQ" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_pdolSuAsEeiE5fsQKgIaEQ" name="Connector">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pdolS-AsEeiE5fsQKgIaEQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_b93fYOAqEeiE5fsQKgIaEQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_pdolTOAsEeiE5fsQKgIaEQ" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_pdolTuAsEeiE5fsQKgIaEQ" name="type">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pdolT-AsEeiE5fsQKgIaEQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_FO9zoOAsEeiE5fsQKgIaEQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_pdolUOAsEeiE5fsQKgIaEQ" name="base_Enumeration" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Enumeration"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_pdolUuAsEeiE5fsQKgIaEQ" name="Model">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pdolU-AsEeiE5fsQKgIaEQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_pdolQOAsEeiE5fsQKgIaEQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_pdolVOAsEeiE5fsQKgIaEQ" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_FO9zpuAsEeiE5fsQKgIaEQ" name="Modelica4SysML" nsURI="http:///schemas/Modelica4SysML/_FO9zpeAsEeiE5fsQKgIaEQ/2" nsPrefix="Modelica4SysML">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FO9ztuAsEeiE5fsQKgIaEQ" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FO9zt-AsEeiE5fsQKgIaEQ" key="Version" value="0.0.3"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FO9zuOAsEeiE5fsQKgIaEQ" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FO9zueAsEeiE5fsQKgIaEQ" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FO9zuuAsEeiE5fsQKgIaEQ" key="Date" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FO9zu-AsEeiE5fsQKgIaEQ" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_FO9zp-AsEeiE5fsQKgIaEQ" name="Partial">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FO9zqOAsEeiE5fsQKgIaEQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_znWCcN93Eei2AdFulrt0aQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_FO9zqeAsEeiE5fsQKgIaEQ" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_FO9zq-AsEeiE5fsQKgIaEQ" name="Connector">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FO9zrOAsEeiE5fsQKgIaEQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_b93fYOAqEeiE5fsQKgIaEQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_FO9zreAsEeiE5fsQKgIaEQ" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_FO9zr-AsEeiE5fsQKgIaEQ" name="type">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FO9zsOAsEeiE5fsQKgIaEQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_FO9zoOAsEeiE5fsQKgIaEQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_FO9zseAsEeiE5fsQKgIaEQ" name="base_Enumeration" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Enumeration"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_cPHncOAqEeiE5fsQKgIaEQ" name="Modelica4SysML" nsURI="http:///schemas/Modelica4SysML/_cPFyQOAqEeiE5fsQKgIaEQ/1" nsPrefix="Modelica4SysML">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cPI1kuAqEeiE5fsQKgIaEQ" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cPI1k-AqEeiE5fsQKgIaEQ" key="Version" value="0.0.2"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cPI1lOAqEeiE5fsQKgIaEQ" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cPI1leAqEeiE5fsQKgIaEQ" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cPI1luAqEeiE5fsQKgIaEQ" key="Date" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cPI1l-AqEeiE5fsQKgIaEQ" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_cPHnceAqEeiE5fsQKgIaEQ" name="Partial">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cPHncuAqEeiE5fsQKgIaEQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_znWCcN93Eei2AdFulrt0aQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_cPHnc-AqEeiE5fsQKgIaEQ" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_cPHndeAqEeiE5fsQKgIaEQ" name="Connector">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cPHnduAqEeiE5fsQKgIaEQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_b93fYOAqEeiE5fsQKgIaEQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_cPHnd-AqEeiE5fsQKgIaEQ" name="base_Interface" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Interface"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_znl6Ed93Eei2AdFulrt0aQ" name="Modelica4SysML" nsURI="http:///schemas/Modelica4SysML/_znkE4N93Eei2AdFulrt0aQ/0" nsPrefix="Modelica4SysML">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_znnIMd93Eei2AdFulrt0aQ" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_znnIMt93Eei2AdFulrt0aQ" key="Version" value="0.0.1"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_znnIM993Eei2AdFulrt0aQ" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_znnINN93Eei2AdFulrt0aQ" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_znnINd93Eei2AdFulrt0aQ" key="Date" value="03.11.18 15:50"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_znnINt93Eei2AdFulrt0aQ" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_znl6Et93Eei2AdFulrt0aQ" name="Partial">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_znl6E993Eei2AdFulrt0aQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_znWCcN93Eei2AdFulrt0aQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_znl6FN93Eei2AdFulrt0aQ" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:type="uml:ElementImport" xmi:id="_znYesN93Eei2AdFulrt0aQ">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+  </elementImport>
+  <elementImport xmi:type="uml:ElementImport" xmi:id="_cPCu8OAqEeiE5fsQKgIaEQ">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+  </elementImport>
+  <elementImport xmi:type="uml:ElementImport" xmi:id="_FO9zoeAsEeiE5fsQKgIaEQ">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Enumeration"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_znWCcN93Eei2AdFulrt0aQ" name="Partial">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_znZs0N93Eei2AdFulrt0aQ" name="base_Class" association="_znZFwN93Eei2AdFulrt0aQ">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_znZFwN93Eei2AdFulrt0aQ" name="Class_Partial" memberEnd="_znZFwd93Eei2AdFulrt0aQ _znZs0N93Eei2AdFulrt0aQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_znZFwd93Eei2AdFulrt0aQ" name="extension_Partial" type="_znWCcN93Eei2AdFulrt0aQ" aggregation="composite" association="_znZFwN93Eei2AdFulrt0aQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_b93fYOAqEeiE5fsQKgIaEQ" name="Connector">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_cPDWAeAqEeiE5fsQKgIaEQ" name="base_Interface" association="_cPCu8eAqEeiE5fsQKgIaEQ">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_cPCu8eAqEeiE5fsQKgIaEQ" name="Interface_Connector" memberEnd="_cPDWAOAqEeiE5fsQKgIaEQ _cPDWAeAqEeiE5fsQKgIaEQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_cPDWAOAqEeiE5fsQKgIaEQ" name="extension_Connector" type="_b93fYOAqEeiE5fsQKgIaEQ" aggregation="composite" association="_cPCu8eAqEeiE5fsQKgIaEQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_FO9zoOAsEeiE5fsQKgIaEQ" name="type">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_FO9zpOAsEeiE5fsQKgIaEQ" name="base_Enumeration" association="_FO9zouAsEeiE5fsQKgIaEQ">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Enumeration"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_FO9zouAsEeiE5fsQKgIaEQ" name="Enumeration_type" memberEnd="_FO9zo-AsEeiE5fsQKgIaEQ _FO9zpOAsEeiE5fsQKgIaEQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_FO9zo-AsEeiE5fsQKgIaEQ" name="extension_type" type="_FO9zoOAsEeiE5fsQKgIaEQ" aggregation="composite" association="_FO9zouAsEeiE5fsQKgIaEQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_pdolQOAsEeiE5fsQKgIaEQ" name="Model">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_pdolQ-AsEeiE5fsQKgIaEQ" name="base_Class" association="_pdolQeAsEeiE5fsQKgIaEQ">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_pdolQeAsEeiE5fsQKgIaEQ" name="Class_Model" memberEnd="_pdolQuAsEeiE5fsQKgIaEQ _pdolQ-AsEeiE5fsQKgIaEQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_pdolQuAsEeiE5fsQKgIaEQ" name="extension_Model" type="_pdolQOAsEeiE5fsQKgIaEQ" aggregation="composite" association="_pdolQeAsEeiE5fsQKgIaEQ"/>
+  </packagedElement>
+</uml:Profile>

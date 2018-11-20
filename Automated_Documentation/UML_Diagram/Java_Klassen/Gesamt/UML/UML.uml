@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Modelica4SysML="http:///schemas/Modelica4SysML/_Oq8REN7HEeicI-a70S-euA/2" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/Modelica4SysML/_Oq8REN7HEeicI-a70S-euA/2 Modelica4SysML.profile.uml#_Oq8REd7HEeicI-a70S-euA"> 
+ <uml:Model xmi:id="_8BnUYN6YEeigT7NLOUUnfg" name="PayprusUMLTest" viewpoint="">
+
+    <packagedElement xmi:type="uml:Class" xmi:id="PartialExpansionValve_ID" name="PartialExpansionValve" visibility="public">
+    <generalization xmi:type="uml:Generalization" xmi:id="65" general="PartialTwoPortTransport_ID" />
+     <ownedAttribute xmi:type="uml:Property" xmi:id="Association77" name="RealPassThrough" type="RealPassThrough_ID" aggregation="composite" association="assocationID77">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon77" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon78" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Association74" name="Filter" type="Filter_ID" aggregation="composite" association="assocationID74">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon74" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon75" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Association71" name="RealOutput" type="RealOutput_ID" aggregation="composite" association="assocationID71">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon71" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon72" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Association68" name="RealInput" type="RealInput_ID" aggregation="composite" association="assocationID68">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon68" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon69" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Association59" name="CalcProc" type="CalcProc_ID" aggregation="composite" association="assocationID59">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon59" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon60" value="*"/>
+    </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="PartialIsenthalpicExpansionValve_ID" name="PartialIsenthalpicExpansionValve" visibility="public">
+    <generalization xmi:type="uml:Generalization" xmi:id="80" general="PartialExpansionValve_ID" />
+     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="ExpansionValveChoke_ID" name="ExpansionValveChoke" visibility="public">
+    <generalization xmi:type="uml:Generalization" xmi:id="83" general="PartialIsenthalpicExpansionValve_ID" />
+     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="ConstantFlowCoefficient_ID" name="ConstantFlowCoefficient" visibility="public">
+    <generalization xmi:type="uml:Generalization" xmi:id="86" general="PartialFlowCoefficient_ID" />
+     </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="CalcProc_ID" name="CalcProc" visibility="public">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Compositon61" name="PartialExpansionValve" type="PartialExpansionValve_ID">
+    <generalization xmi:type="uml:Generalization" xmi:id="65" general="PartialTwoPortTransport_ID" />
+     <ownedAttribute xmi:type="uml:Property" xmi:id="Association77" name="RealPassThrough" type="RealPassThrough_ID" aggregation="composite" association="assocationID77">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon77" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon78" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Association74" name="Filter" type="Filter_ID" aggregation="composite" association="assocationID74">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon74" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon75" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Association71" name="RealOutput" type="RealOutput_ID" aggregation="composite" association="assocationID71">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon71" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon72" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Association68" name="RealInput" type="RealInput_ID" aggregation="composite" association="assocationID68">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon68" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon69" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Association59" name="CalcProc" type="CalcProc_ID" aggregation="composite" association="assocationID59">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon59" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon60" value="*"/>
+    </ownedAttribute>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon62"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon63" value="1"/>
+     </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="PartialTwoPortTransport_ID" name="PartialTwoPortTransport" visibility="public">
+    <generalization xmi:type="uml:Generalization" xmi:id="89" general="PartialTwoPort_ID" />
+     </packagedElement>
+    <packagedElement xmi:type="uml:Abstraction" xmi:id="62" name="FlowCoefficient" client="PartialExpansionValve_ID" supplier="ConstantFlowCoefficient_ID"/>
+
+    <packagedElement xmi:type="uml:Association" xmi:id="assocationID59" memberEnd="Association59 Property59">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="Compositon64" source="org.eclipse.papyrus">
+    <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="Compositon65" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="Property59" name="PartialExpansionValve" type="PartialExpansionValve_ID" association="assocationID59"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assocationID68" memberEnd="Association68 Property68">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="Compositon73" source="org.eclipse.papyrus">
+    <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="Compositon74" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="Property68" name="PartialExpansionValve" type="PartialExpansionValve_ID" association="assocationID68"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assocationID71" memberEnd="Association71 Property71">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="Compositon76" source="org.eclipse.papyrus">
+    <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="Compositon77" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="Property71" name="PartialExpansionValve" type="PartialExpansionValve_ID" association="assocationID71"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assocationID74" memberEnd="Association74 Property74">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="Compositon79" source="org.eclipse.papyrus">
+    <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="Compositon80" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="Property74" name="PartialExpansionValve" type="PartialExpansionValve_ID" association="assocationID74"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assocationID77" memberEnd="Association77 Property77">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="Compositon82" source="org.eclipse.papyrus">
+    <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="Compositon83" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="Property77" name="PartialExpansionValve" type="PartialExpansionValve_ID" association="assocationID77"/>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="0">
+     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="0" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="Modelica4SysML.profile.uml#_znl6Ed93Eei2AdFulrt0aQ"/>
+     </eAnnotations>
+        <appliedProfile xmi:type="uml:Profile" href="Modelica4SysML.profile.uml#_zAFOIN93Eei2AdFulrt0aQ"/>
+    </profileApplication>
+    </uml:Model>
+     <Modelica4SysML:Partial xmi:id="6" base_Class="PartialExpansionValve_ID"/>
+     <Modelica4SysML:Partial xmi:id="20" base_Class="PartialIsenthalpicExpansionValve_ID"/>
+     <Modelica4SysML:Model xmi:id="28" base_Class="ExpansionValveChoke_ID"/>
+     <Modelica4SysML:Model xmi:id="38" base_Class="ConstantFlowCoefficient_ID"/>
+     <Modelica4SysML:type xmi:id="47" base_Enumeration="CalcProc_ID"/>
+     <Modelica4SysML:Partial xmi:id="54" base_Class="PartialTwoPortTransport_ID"/>
+</xmi:XMI>

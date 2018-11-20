@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_8BnUYN6YEeigT7NLOUUnfg" name="PayprusUMLTest" visibility="public" viewpoint="">
+  
+  <packagedElement xmi:type="uml:Class" xmi:id="PartialTwoPort_ID" name="PartialTwoPort" visibility="private">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_txhqEuAxEei4GdNvOsc7nQ" name="fluidport_b" type="FluidPort_b_ID" aggregation="composite" association="_txfN0OAxEei4GdNvOsc7nQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_txhqE-AxEei4GdNvOsc7nQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_txhqFOAxEei4GdNvOsc7nQ" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  
+  <packagedElement xmi:type="uml:Interface" xmi:id="FluidPort_b_ID" name="FluidPort_b" visibility="public">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_weIsM-AvEei4GdNvOsc7nQ" name="partialtwoport" type="PartialTwoPort_ID">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_weIsNOAvEei4GdNvOsc7nQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_weIsNeAvEei4GdNvOsc7nQ" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  
+  <packagedElement xmi:type="uml:Association" xmi:id="_txfN0OAxEei4GdNvOsc7nQ" memberEnd="_txhqEuAxEei4GdNvOsc7nQ _txhqFeAxEei4GdNvOsc7nQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_txhqEOAxEei4GdNvOsc7nQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_txhqEeAxEei4GdNvOsc7nQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_txhqFeAxEei4GdNvOsc7nQ" name="partialtwoport" type="PartialTwoPort_ID" association="_txfN0OAxEei4GdNvOsc7nQ"/>
+  </packagedElement>
+
+  </uml:Model>

@@ -1,0 +1,92 @@
+@startuml
+
+
+
+
+ Class PartialExpansionValve << partial >>  {
+}
+
+
+
+
+
+
+
+
+
+
+
+
+ Class PartialIsenthalpicExpansionValve << partial >>  {
+}
+
+
+
+
+
+
+Class ExpansionValveChoke << model >>  {
+}
+
+
+
+
+
+
+package Utilities.FlowCoefficient.SpecifiedFlowCoefficients{ 
+
+Class ConstantFlowCoefficient << model >>  {
+}
+}
+
+
+
+
+
+
+enum     CalcProc << type >> {
+}
+
+
+
+
+
+ Class PartialTwoPortTransport << partial >>  {
+}
+
+ 
+
+CalcProc -down--* "calcProc"PartialExpansionValve
+
+
+ConstantFlowCoefficient <|..-up "FlowCoefficient"PartialExpansionValve
+
+
+PartialTwoPortTransport <|---up PartialExpansionValve
+
+
+RealInput -down--* "manVarVal"PartialExpansionValve
+
+
+RealOutput -down--* "curManVarVal"PartialExpansionValve
+
+
+Filter -down--* "filterOpening"PartialExpansionValve
+
+
+RealPassThrough -down--* "openingThrough"PartialExpansionValve
+
+
+PartialExpansionValve <|---up PartialIsenthalpicExpansionValve
+
+
+PartialIsenthalpicExpansionValve <|---up ExpansionValveChoke
+
+
+PartialFlowCoefficient <|---up ConstantFlowCoefficient
+
+
+PartialTwoPort <|---up PartialTwoPortTransport
+
+
+ @enduml

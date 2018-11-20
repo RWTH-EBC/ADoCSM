@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Automated_Documentation</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.python.pydev.PyDevBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.python.pydev.pythonNature</nature>
+	</natures>
+	<filteredResources>
+		<filter>
+			<id>1539382909096</id>
+			<name>UML_Diagram</name>
+			<type>5</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1539382909106</id>
+			<name>UML_Diagram</name>
+			<type>5</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.andFilterMatcher</id>
+			</matcher>
+		</filter>
+	</filteredResources>
+</projectDescription>
