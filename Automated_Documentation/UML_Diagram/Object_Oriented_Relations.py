@@ -344,6 +344,7 @@ class Relation():
                         PolymorphismModel = PolymorphismModel[0]
                         if relation_directory == None:
                             continue
+                  
                         yield relation_directory + "," + RelationModel+","+Package
             
                 if x_array[0] == "replaceable" and x_array[1] == "package":
@@ -373,9 +374,7 @@ class Relation():
                     PolymorphismModel = PolymorphismModel[0]
                     if relation_directory == None:
                         continue
-                    output_path=r"C:\Users\hinack\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen\TempData"
-                    #DataCheck.set_ModelsinPackages(filename_input, output_path)
-                    
+                   
                     yield relation_directory + "," + RelationModel+","+Package
                     
                 
@@ -425,7 +424,7 @@ class Relation():
                         yield relation_directory + "," + Model
                     elif count< len(self.ListLibrary):
                         continue
-                    elif Libraries != self.ListLibrary[i] and x_modelica[0] != "Medium" :    
+                    """elif Libraries != self.ListLibrary[i] and x_modelica[0] != "Medium" :    
                         
                         ChildClass = filename_input.split(".")
                         ChildClassStr = ""
@@ -442,13 +441,11 @@ class Relation():
                         T = T.split(".")
                         x_Modelica = x_array[0].split(".")
                         AixLib_path2 =AixLib_path+"\\"+T[0]+"\\"+T[1]
-                        print(AixLib_path2)
                         Model = x_Modelica[len(x_Modelica)-1]
-                        print(Model)
                         relation_directory = DataCheck.showModel(AixLib_path2,Model)
                         if relation_directory != None:
                             #print(relation_directory)
-                            yield relation_directory + "," + RelationModel
+                            yield relation_directory + "," + RelationModel"""
                    
                    
                 """for i in range(0, len(self.ListLibrary), 1):

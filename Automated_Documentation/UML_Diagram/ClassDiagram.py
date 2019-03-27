@@ -589,29 +589,23 @@ class ClassDiagram():
     def set_initialMethode(self,filename_input,filename_output,output_path,parameter,variables,primitivevariables,complexvariables,methode):
         self.readfile_in = open(filename_input,'r')
         readfile_out = open(filename_output,"a")
-        array0 = []
-        array01 = []
-        array1 = []
-        array12 = []
-        array2 = []
-        array21 = []
-        array3 = []
-        array31 = []
-        array4 = []
-        array41 = []
-        array5 = []
-        array6 = []
-        array06= []
-        array07= []
-        array08 = []
-        array09 = []
-        array10 = []
-        Counter_InitialEquation = []
+        array_if = []
+        array1_if = []
+        array_elseif = []
+        array_else = []
+        array_endif = []
+        array_equationsign = []
+        array_for = []
+        
         Countlistfor = []
         Countlistif = []
         Countlistelseif = []
         Countlistelse = []
+        countlistendif =[]
+        Counter_Equation = []
         countlistendif = []
+        counter = 0
+        Counter_InitialEquation = []
         count = []
         counter = 0
         for line in self.readfile_in.readlines():
@@ -633,247 +627,179 @@ class ClassDiagram():
                 line = linecache.getline(filename_input, i)
                 line = line.replace(";"," ; ")
                 line = line.replace(" = ","=")
+                line = line.replace("\n"," ")
+                            
                 x = line.split()         
                 x_array = np.asarray(x)
                 if len(x_array)>0:
                     if methode ==True:
                         #############################################################################
-                        ## if
+                        ## if-Conditions
                         if x_array[0] == "if" and len(countlistendif)==0:
-                            line = line.replace("\n"," ")
+                            
                             x = line.find('"')
-                            array1.append(line[:x-1])
-                            array01.append(x_array)
+                            array_if.append(line[:x-1])
                             Countlistif.append(count)
-                            pass
-                    
-                    if methode ==True:
-                        if len(Countlistif)%2==1 and len(Countlistelseif)==0 and x_array[0] != "if" and  x_array[0] != "elseif"and  x_array[0] != "else" and  x_array[1] != "if;":
-                            line = line.replace("\n"," ")
-                            x = line.find('"')
-                           
-                            array1.append(line[:x-1])    
-                            array06.append(x_array)
-                    
-                    if methode ==True:
+                            countlistendif.append(count) 
+                            continue
+                        elif len(Countlistif)==1 and len(Countlistelseif)==0 and len(countlistendif)==1: 
+                            if x_array[0] != "if" and  x_array[0] != "elseif"and  x_array[0] != "else" and  x_array[1] != "if;":
+                                x = line.find('"')
+                                array_if.append(line[:x-1])    
+                                continue
                         #############################################################################
                         ## elseif
-                        if x_array[0]=="elseif":
-                            line = line.replace("\n"," ")
-                            x = line.find('"')
-                            array6.append(line[:x-1])    
-                            Countlistelseif = []
-                            Countlistelseif.append(count)
-                            countlistendif.append(count)
-                            array1str =""
-                            if len(array1)>1:
-                                for i in array1:
-                                    array1str=array1str+(i)+";"
-                                    continue
-                                readfile_out.write("\n # "+"("+array1str+")")
-                                countlistendif = []
-                            if len(array1)==1:
-                                readfile_out.write("\n # "+"("+array1[0]+")")
-                                countlistendif = []
-                          
-                            if len(array6)>1:
-                                for w in range(0,len(array6),1):
-                                    readfile_out.write("\n # "+"("+array6[w]+")")
-                                   
-                                    continue
-                                countlistendif = []
-                                Countlistelseif = []
-                                array6=[]
-                            array1 = []
-                           
-                    if methode ==True:
-                        if len(array6)==1:
-                            readfile_out.write("\n # "+"("+array6[0]+")")
-                            array6 = []
-                            continue
-                    
-                    if methode ==True:
-                        if len(Countlistif)%2==1 and len(Countlistelseif)%2==1 and  x_array[0] != "elseif" and len(countlistendif)<2:
-                            line = line.replace("\n"," ")
-                            x = line.find('"')
-                            array6.append(line[:x-1])    
-                            array06.append(x_array)
-                            array1str =""
-                            if len(array6)>0:
-                                for i in array6:
-                                    array1str=array1str+(i)+";"
-                                readfile_out.write(" ("+array1str+")")
-                            Countlistelseif = [1]
-                            array6 = []
-                    
-                    #############################################################################
-                    ## else
-                    if methode ==True:
-                        if x_array[0] == "else":
-                            line = line.replace("\n"," ")
-                            x = line.find('"') 
-                            if line.find("assert")>-1:
-                                x = line.find(';')
-                            array2.append(line[:x-1])
-                            Countlistelse.append(count)
-                            continue
-                            pass
-                    if methode ==True:
-                        if len(Countlistif)%2==1 and len(Countlistelse)%2==1 and x_array[0] != "if" and  x_array[0] != "elseif" and x_array[0] != "end" and x_array[0] != "else":
-                            line = line.replace("\n"," ")
-                            x = line.find('"')
-                            array2.append(line[:x-1])    
-                            array06.append(x_array)
-                            continue
-                            pass
-                    #############################################################################
-                    ## end if
-                    if methode ==True:
-                        if x_array[0] == "end" and x_array[1] == "if"  :
-                            countlistendif.append(count)
-                            line = line.replace("\n"," ")
-                            x = line.find('"')
-                            if len(Countlistelseif)==0:
-                                array1str =""
-                                for i in array1:
-                                     array1str = array1str+i+" "
-                                readfile_out.write("\n # "+"("+array1str+")") 
+                            elif x_array[0]=="elseif":
+                                
+                                x = line.find('"')
+                                array_elseif.append(line[:x-1])    
+                                Countlistelseif.append(count)
+                                array_ifstr =""
+                                ###Write if-Conditions
+                                if len(array_if)>0:
+                                    for i in array_if:
+                                        array_ifstr=array_ifstr+(i)+";"
+                                        continue
+                                    readfile_out.write("\n # "+"("+array_ifstr+")")
+                                    Countlistif = []
                                 continue
-                            array5.append(line[:x-1])
-                            Countlistif.append(count)
-                            Countlistelseif.append(count)
-                            array1str =""
-                            if len(array2)>0:
-                                for i in array2:
-                                    array1str=array1str+(i)+";"
-                                readfile_out.write("\n # "+"("+array1str+")")
-                            if len(countlistendif)%2==1:
-                                readfile_out.write("\n # " +"("+array5[0]+")")
-                           
-                            array5 = []
-                            array2 = []
-                            countlistendif = []
+                            elif x_array[0]=="else":
+                                x = line.find('"')
+                                Countlistelse.append(count)
+                                array_else.append(line[:x-1])    
+                                array_ifstr =""
+                                ###Write if-Conditions
+                                if len(array_if)>0:
+                                    for i in array_if:
+                                        array_ifstr=array_ifstr+(i)+";"
+                                        continue
+                                    readfile_out.write("\n # "+"("+array_ifstr+")")
+                                    Countlistif = []
+                                continue
+                        
+
+                        elif len(Countlistif) == 0 and len(Countlistelseif)>0 and len(Countlistelse)==0 and len(countlistendif)==1:
+                          
+                            if x_array[0] != "if" and  x_array[0] != "elseif" and x_array[0] != "else" and  x_array[1] != "if;" and x_array[1] != "if" :
+                                x = line.find('"')
+                                array_elseif.append(line[:x-1])   
+                                continue
+                            elif x_array[0] == "if" and   x_array[1] != "if;" and x_array[1] != "if" :
+                                x = line.find('"')
+                                array_elseif.append(line[:x-1])   
+                                continue
+                            
+                            
+                            
+                            elif x_array[0]=="elseif" and len(array_elseif)>0:
+                                
+                                x = line.find('"')
+                                array_elifstr = ""
+                                if len(array_elseif)>0:
+                                    for i in array_elseif:
+                                        array_elifstr=array_elifstr+(i)+";"
+                                    readfile_out.write("\n # "+"("+array_elifstr+")")
+                                    array_elseif = []
+                                array_elseif.append(line[:x-1])
+                                continue
+                            elif x_array[0]=="elseif" and len(array_elseif)==0:
+                               
+                                x = line.find('"')
+                                array_elseif.append(line[:x-1])   
+                                continue
+                            elif x_array[0]=="else" and len(array_elseif)>0:
+                                x = line.find('"')
+                                array_else.append(line)   
+                                array_elifstr = ""
+                                Countlistelse.append(count)
+                                ###Write elseif-Conditions
+                                if len(array_elseif)>0:
+                                    for i in array_elseif:
+                                        array_elifstr=array_elifstr+(i)
+                                    readfile_out.write("\n # "+"("+array_elifstr+")")
+                                    Countlistelseif = []
+                                continue
+                            elif x_array[0]=="end" and x_array[1]=="if":
+                                x = line.find('"')
+                               
+                                Countlistelse.append(count)
+                                array_else.append(line[:x-1])    
+                                array_ifstr =""
+                                
+                                ###Write if-Conditions
+                                if len(array_elseif)>0:
+                                    for i in array_elseif:
+                                        array_ifstr=array_ifstr+(i)+";"
+                                    readfile_out.write("\n # "+"("+array_ifstr+")")
+                                readfile_out.write("\n # "+"("+line+")")
+                                Countlistelseif = []
+                                Countlistelse = []
+                                array_if = []
+                                array_elseif =[]
+                                array_else = []
+                                array_endif = []
+                                countlistendif = []
+                                continue
+                        elif len(Countlistelseif) == 0 and len(Countlistelse)==1 and len(countlistendif)==1:
+                          
+                            if x_array[0]=="else":
+                                #x = line.find('"')
+                                #array_else.append(line[:x-1])  
+                                continue
+                            elif x_array[0]=="end" and x_array[1]=="if":
+                                x = line.find('"')
+                                array_endif.append(line[:x-1])
+                                array_elsestr=""
+                                if len(array_else)>0:
+                                    for i in array_else:
+                                        array_elsestr = array_elsestr+(i)+";"
+                                    readfile_out.write("\n # "+"("+array_elsestr+")")
+                                readfile_out.write("\n # "+"("+array_endif[0]+")")
+                                Countlistelseif = []
+                                Countlistelse = []
+                                array_if = []
+                                array_elseif =[]
+                                array_else = []
+                                array_endif = []
+                                countlistendif = []
+                                continue
+                            else:
+                                x = line.find('"')
+                                array_else.append(line[:x-1]) 
+                                continue
+                               
+                        
+                         #############################################################################
+                         ## end for
+                        elif x_array[0]=="for" or len(Countlistfor)>0:
+                            x = line.find('"')
+                            Countlistfor.append(count)
+                            array_for.append(line[:x-1])
+                            x = line.find('"')
+                            if x_array[0]=="end":
+                                if len(array_for)>0:
+                                    array_forstr=""
+                                    for i in array_for:
+                                        array_forstr = array_forstr+(i)+";"
+                                    readfile_out.write("\n # "+"("+array_forstr+")")
+                                    Countlistfor = []
+                                    array_for = []
+                            else:
+                                continue
+                        #assert
+                        ################################################################################################################################
+                        elif x_array[0]=="assert":
+                            readfile_out.write("\n # "+"("+line+")")
+                            
+                       
+                        ##############################################################################
+                        ####Equation sign  
+                        elif line.find("=")>-1:
+                            x = line.find('"')
+                            y = line.find('=')
+                            readfile_out.write("\n # "+line[:y-1]+"("+line[y+1:x].replace(";","")+")")
                             continue
-                    
-                    #############################################################################
-                    ## for       
-                    if methode ==True:
-                            if x_array[0] == "for" and len(Countlistif)%2==0:
-                                line = line.replace("\n"," ")
-                                array08.append(line)
-                                Countlistfor.append(count)
-                    if methode ==True:
-                            if len(Countlistfor)%2 == 1 and x_array[0] != "for" and x_array[0] != "end"and  len(Countlistif)%2==0 :
-                                line = line.replace("\n"," ")
-                                array08.append(line)
-                    
-                    #############################################################################
-                    ## end for       
-                    if methode ==True:
-                            if x_array[0] == "end" and x_array[1] =="for" and len(Countlistif)%2==0:
-                                Countlistfor = []
-                                line = line.replace("\n"," ")
-                                array08.append(line)
-                                array08str =""
-                                for i in array08:
-                                    array08str=array08str+(i)
-                                readfile_out.write("\n # "+"("+array08str+")")
-                                array08 = []
-                if methode ==True:
-                    if len(x_array)>0  and len(Countlistfor)%2 == 0 and len(Countlistif)%2==0 :
-                        if x_array[0] == "annotation":
-                            break
-                        if methode ==True:
-                            if line[0:7] == "connect":
-                                model1 = line[line.find("(")+1:line.find(",")]
-                                model2 =line [line.find(",")+1:line.find(")")]
-                                str = model1  +" #.. "+ model2
-                                array3.append(str)
-                                pass
-                        if methode ==True:
-                            if len(x_array)>1:
-                                if x_array[1] == "=" or line.find("=") > -1:
-                                    array4.append(line)
-                                    pass
-                        if methode ==True:
-                            if x_array[0] =="assert":
-                                array07.append(line)
-                        continue
-                    pass
-        #assert
-        ################################################################################################################################
-        i = 0
-        while i<len(array07):
-            a = array07[i].find('annotation')
-            x = array07[i].find(')')
-            readfile_out.write(("\n # "+ array07[i][0:x+1]))
-            i = i+1
-        ## =
-        ##############################################################################################################################
-        i=0
-        while i<len(array4):
-            array4[i] = array4[i].replace(" ( ","(")
-            array4[i] = array4[i].replace(" ) ",")")
-            array4[i] = array4[i].replace(" = ","=")
-            z = array4[i].find("=")
-            y = array4[i].find('"')
-            w = array4[i].find(';')
-            x = array4[i][z+1:y-1]
-            q = array4[i][z+1:w-1]
             
-            if y > -1:
-               readfile_out.write(("\n # "+ array4[i][0:z] +" (" + x  +")"))
-            else:
-                readfile_out.write(("\n + "+ array4[i][0:z] +" (" + q  +")"))
-            i = i+1
-            pass
-        ##if
-        """"i=0
-        while i<len(array1):
-            array1[i] = array1[i].replace(" = ","=")
-            y = array1[i].find('"')  
-            x = array1[i].find("then")
-            z = array1[i].find("(")
-            w = array1[i].find(")")
-            if array01[i][2] == "then":
-                readfile_out.write(("\n + "+ array01[i][0]+" "+array01[i][1]+" "+array01[i][2]+" ("+array1[i][x+4:y])+")")
-            else:
-                readfile_out.write(("\n + "+ array01[i][0]+" "+array1[i][z:y]))
-            i = i+1
-            pass"""
-        """##elseif
-        i=0
-        while i<len(array6):
-            array6[i] = array6[i].replace(" = ","=")
-            y = array6[i].find('"')  
-            x = array6[i].find("then")
-            z = array6[i].find("(")
-            w = array6[i].find(")")
-            readfile_out.write("\n + "+array06[i][0]+" "+array6[i][z:y] )
-            i=i+1
-            pass
-        
-        ##else
-        i=0
-        while i<len(array2):
-            y = array2[i].find('"')  
-            x = array2[i].find(')')  
-            readfile_out.write(("\n + "+ array2[i][0:x+1]))
-            i = i+1
-            pass
-      ##end if
-        i=0
-        while i<len(array5):
-            readfile_out.write(("\n + "+ array5[i][0]+" "+array5[i][1][0:2])+"()")
-            i = i+1
-            pass
-        ##for
-        #####################################################################################################
-        i=0
-        while i<len(array08):
-            readfile_out.write(("\n + "+ array08[i]))
-            i = i+1
-            pass"""
        
        
         
@@ -885,23 +811,14 @@ class ClassDiagram():
     def set_Methode(self,filename_input,filename_output,output_path,parameter,variables,primitivevariables,complexvariables,methode):
         self.readfile_in = open(filename_input,'r')
         readfile_out = open(filename_output,"a")
-        array0 = []
-        array01 = []
-        array1 = []
-        array12 = []
-        array2 = []
-        array21 = []
-        array3 = []
-        array31 = []
-        array4 = []
-        array41 = []
-        array5 = []
-        array6 = []
-        array06= []
-        array07= []
-        array08 = []
-        array09 = []
-       
+        array_if = []
+        array1_if = []
+        array_elseif = []
+        array_else = []
+        array_endif = []
+        array_equationsign = []
+        array_for = []
+        
         Countlistfor = []
         Countlistif = []
         Countlistelseif = []
@@ -925,237 +842,151 @@ class ClassDiagram():
                 line = linecache.getline(filename_input, i)
                 line = line.replace(";"," ; ")
                 line = line.replace(" = ","=")
+                line = line.replace("\n"," ")
+                            
                 x = line.split()         
                 x_array = np.asarray(x)
                 if len(x_array)>0:
                     if methode ==True:
                         #############################################################################
-                        ## if
-                        if x_array[0] == "if" and len(countlistendif)==0:
-                            line = line.replace("\n"," ")
+                        ## if-Conditions
+                        if x_array[0] == "if":
                             x = line.find('"')
-                            array1.append(line[:x-1])
-                            array01.append(x_array)
+                            array_if.append(line[:x-1])
                             Countlistif.append(count)
-                            pass
-                    
-                    if methode ==True:
-                        if len(Countlistif)%2==1 and len(Countlistelseif)==0 and x_array[0] != "if" and  x_array[0] != "elseif"and  x_array[0] != "else" and  x_array[1] != "if;":
-                            line = line.replace("\n"," ")
-                            x = line.find('"')
-                            array1.append(line[:x-1])    
-                            array06.append(x_array)
-                    
-                    if methode ==True:
+                            continue
+                        elif len(Countlistif)==1 and len(Countlistelseif)==0: 
+                            if x_array[0] != "if" and  x_array[0] != "elseif"and  x_array[0] != "else" and  x_array[1] != "if;":
+                                x = line.find('"')
+                                array_if.append(line[:x-1])    
+                                continue
                         #############################################################################
                         ## elseif
-                        if x_array[0]=="elseif":
-                            line = line.replace("\n"," ")
-                            x = line.find('"')
-                            array6.append(line[:x-1])    
-                            Countlistelseif = []
-                            Countlistelseif.append(count)
-                            countlistendif.append(count)
-                            array1str =""
-                            if len(array1)>1:
-                                for i in array1:
-                                    array1str=array1str+(i)+";"
-                                    continue
-                                readfile_out.write("\n + "+"("+array1str+")")
-                                countlistendif = []
-                            if len(array1)==1:
-                                readfile_out.write("\n + "+"("+array1[0]+")")
-                                countlistendif = []
-                            if len(array6)>1:
-                                for w in range(0,len(array6),1):
-                                    readfile_out.write("\n + "+"("+array6[w]+")")
-                                    continue
-                                countlistendif = []
-                                Countlistelseif = []
-                                array6=[]
-                            array1 = []
-                           
-                    if methode ==True:
-                        if len(array6)==1:
-                                readfile_out.write("\n + "+"("+array6[0]+")")
-                                array6 = []
+                            elif x_array[0]=="elseif":
+                                x = line.find('"')
+                                array_elseif.append(line[:x-1])    
+                                Countlistelseif.append(count)
+                                array_ifstr =""
+                                ###Write if-Conditions
+                                if len(array_if)>0:
+                                    for i in array_if:
+                                        array_ifstr=array_ifstr+(i)+";"
+                                        continue
+                                    readfile_out.write("\n + "+"("+array_ifstr+")")
+                                    Countlistif = []
                                 continue
-                    
-                    if methode ==True:
-                        if len(Countlistif)%2==1 and len(Countlistelseif)%2==1 and  x_array[0] != "elseif" and len(countlistendif)<2:
-                            line = line.replace("\n"," ")
+                            elif x_array[0]=="else":
+                                x = line.find('"')
+                                Countlistelse.append(count)
+                                array_else.append(line[:x-1])    
+                                array_ifstr =""
+                                ###Write if-Conditions
+                                if len(array_if)>0:
+                                    for i in array_if:
+                                        array_ifstr=array_ifstr+(i)+";"
+                                        continue
+                                    readfile_out.write("\n + "+"("+array_ifstr+")")
+                                    Countlistif = []
+                                continue
+
+                        elif len(Countlistif) == 0 and len(Countlistelseif)>0 and len(Countlistelse)==0:
+                            if x_array[0] != "if" and  x_array[0] != "elseif" and x_array[0] != "else" and  x_array[1] != "if;" and x_array[1] != "if" :
+                                x = line.find('"')
+                                array_elseif.append(line[:x-1])   
+                                continue
+                            elif x_array[0]=="elseif" and len(array_elseif)>0:
+                                x = line.find('"')
+                                #array_elseif.append(line[:x-1])  
+                                array_elifstr = ""
+                                ###Write elseif-Conditions
+                                if len(array_elseif)>0:
+                                    for i in array_elseif:
+                                        array_elifstr=array_elifstr+(i)+";"
+                                    readfile_out.write("\n + "+"("+array_elifstr+")")
+                                    array_elseif = []
+                                array_elseif.append(line[:x-1])
+                                continue
+                            elif x_array[0]=="elseif" and len(array_elseif)==0:
+                                x = line.find('"')
+                                array_elseif.append(line[:x-1])   
+                                continue
+                            #elif len(array_elseif)>0:
+                             #   x = line.find('"')
+                              #  array_elseif.append(line[:x-1])
+                               # continue
+                            elif x_array[0]=="else" and len(array_elseif)>0:
+                                x = line.find('"')
+                                array_else.append(line)   
+                                array_elifstr = ""
+                                Countlistelse.append(count)
+                                ###Write elseif-Conditions
+                                if len(array_elseif)>0:
+                                    for i in array_elseif:
+                                        array_elifstr=array_elifstr+(i)
+                                    readfile_out.write("\n + "+"("+array_elifstr+")")
+                                    Countlistelseif = []
+                                continue
+                        elif len(Countlistelseif) == 0 and len(Countlistelse)==1:
+                          
+                            if x_array[0]=="else":
+                                #x = line.find('"')
+                                #array_else.append(line[:x-1])  
+                                continue
+                            elif x_array[0]=="end" and x_array[1]=="if":
+                                x = line.find('"')
+                                array_endif.append(line[:x-1])
+                                array_elsestr=""
+                                if len(array_else)>0:
+                                    for i in array_else:
+                                        array_elsestr = array_elsestr+(i)+";"
+                                    readfile_out.write("\n + "+"("+array_elsestr+")")
+                                readfile_out.write("\n + "+"("+array_endif[0]+")")
+                                Countlistelseif = []
+                                Countlistelse = []
+                                array_if = []
+                                array_elseif =[]
+                                array_else = []
+                                array_endif = []
+                                continue
+                            else:
+                                x = line.find('"')
+                                array_else.append(line[:x-1]) 
+                                continue
+                               
+                        
+                         #############################################################################
+                         ## end for
+                        elif x_array[0]=="for" or len(Countlistfor)>0:
                             x = line.find('"')
-                            array6.append(line[:x-1])    
-                            array06.append(x_array)
-                            array1str =""
-                            if len(array6)>0:
-                                for i in array6:
-                                    array1str=array1str+(i)+";"
-                                readfile_out.write(" ("+array1str+")")
-                            Countlistelseif = [1]
-                            array6 = []
-                  
-                    if methode ==True:
-                        if x_array[0] == "else":
-                            line = line.replace("\n"," ")
-                            x = line.find('"') 
-                            if line.find("assert")>-1:
-                                x = line.find(';')
-                            array2.append(line[:x-1])
-                            Countlistelse.append(count)
-                            continue
-                            pass
-                    if methode ==True:
-                        if len(Countlistif)%2==1 and len(Countlistelse)%2==1 and x_array[0] != "if" and  x_array[0] != "elseif" and x_array[0] != "end" and x_array[0] != "else":
+                            Countlistfor.append(count)
+                            array_for.append(line[:x-1])
+                            x = line.find('"')
+                            if x_array[0]=="end":
+                                if len(array_for)>0:
+                                    array_forstr=""
+                                    for i in array_for:
+                                        array_forstr = array_forstr+(i)+";"
+                                    readfile_out.write("\n + "+"("+array_forstr+")")
+                                    Countlistfor = []
+                                    array_for = []
+                            else:
+                                continue
+                        #assert
+                        ################################################################################################################################
+                        elif x_array[0]=="assert":
+                            readfile_out.write("\n + "+"("+line+")")
                             
-                            line = line.replace("\n"," ")
+                       
+                        ##############################################################################
+                        ####Equation sign  
+                        elif line.find("=")>-1:
                             x = line.find('"')
-                            array2.append(line[:x-1])    
-                            array06.append(x_array)
+                            y = line.find('=')
+                            readfile_out.write("\n + "+line[:y-1]+"("+line[y+1:x].replace(";","")+")")
                             continue
-                            pass
-                    
-                    #############################################################################
-                    ## end for
-                    if methode ==True:
-                        if x_array[0] == "end" and x_array[1] == "if":
-                            countlistendif.append(count)
-                            line = line.replace("\n"," ")
-                            x = line.find('"')
-                            if len(Countlistelseif)==0:
-                                array1str =""
-                                for i in array1:
-                                     array1str = array1str+i+" "
-                                readfile_out.write("\n + "+"("+array1str+")") 
-                            array5.append(line[:x-1])
-                            Countlistif.append(count)
-                            Countlistelseif.append(count)
-                            array1str =""
-                            if len(array2)>0:
-                                for i in array2:
-                                    array1str=array1str+(i)+";"
-                                readfile_out.write("\n + "+"("+array1str+")")
-                            readfile_out.write("\n + " +"("+array5[0]+")")
-                            array2 = []
-                            countlistendif = []
-                    if methode ==True:
-                            if x_array[0] == "for" and len(Countlistif)%2==0:
-                                line = line.replace("\n"," ")
-                                array08.append(line)
-                                Countlistfor.append(count)
-                    if methode ==True:
-                            if len(Countlistfor)%2 == 1 and x_array[0] != "for" and x_array[0] != "end"and  len(Countlistif)%2==0 :
-                                line = line.replace("\n"," ")
-                                array08.append(line)
-                    if methode ==True:
-                            if x_array[0] == "end" and x_array[1] =="for" and len(Countlistif)%2==0:
-                                Countlistfor = []
-                                line = line.replace("\n"," ")
-                                array08.append(line)
-                                array08str =""
-                                for i in array08:
-                                    array08str=array08str+(i)
-                                readfile_out.write("\n + "+"("+array08str+")")
-                                array08 = []
-                if methode ==True:
-                    if len(x_array)>0  and len(Countlistfor)%2 == 0 and len(Countlistif)%2==0 :
-                        if x_array[0] == "annotation":
-                            break
-                        if methode ==True:
-                            if line[0:7] == "connect":
-                                model1 = line[line.find("(")+1:line.find(",")]
-                                model2 =line [line.find(",")+1:line.find(")")]
-                                str = model1  +" #.. "+ model2
-                                array3.append(str)
-                                pass
-                        if methode ==True:
-                            if len(x_array)>1:
-                                if x_array[1] == "=" or line.find("=") > -1:
-                                    array4.append(line)
-                                    pass
-                        if methode ==True:
-                            if x_array[0] =="assert":
-                                array07.append(line)
-                        continue
-                    pass
-        #assert
-        ################################################################################################################################
-        i = 0
-        while i<len(array07):
-            a = array07[i].find('annotation')
-            x = array07[i].find(')')
-            readfile_out.write(("\n + "+ array07[i][0:x+1]))
-            i = i+1
-        ## =
-        ##############################################################################################################################
-        i=0
-        while i<len(array4):
-            array4[i] = array4[i].replace(" ( ","(")
-            array4[i] = array4[i].replace(" ) ",")")
-            array4[i] = array4[i].replace(" = ","=")
-            z = array4[i].find("=")
-            y = array4[i].find('"')
-            w = array4[i].find(';')
-            x = array4[i][z+1:y-1]
-            q = array4[i][z+1:w-1]
-            
-            if y > -1:
-               readfile_out.write(("\n + "+ array4[i][0:z] +" (" + x  +")"))
-            else:
-                readfile_out.write(("\n + "+ array4[i][0:z] +" (" + q  +")"))
-            i = i+1
-            pass
-        ##if
-        """"i=0
-        while i<len(array1):
-            array1[i] = array1[i].replace(" = ","=")
-            y = array1[i].find('"')  
-            x = array1[i].find("then")
-            z = array1[i].find("(")
-            w = array1[i].find(")")
-            if array01[i][2] == "then":
-                readfile_out.write(("\n + "+ array01[i][0]+" "+array01[i][1]+" "+array01[i][2]+" ("+array1[i][x+4:y])+")")
-            else:
-                readfile_out.write(("\n + "+ array01[i][0]+" "+array1[i][z:y]))
-            i = i+1
-            pass"""
-        """##elseif
-        i=0
-        while i<len(array6):
-            array6[i] = array6[i].replace(" = ","=")
-            y = array6[i].find('"')  
-            x = array6[i].find("then")
-            z = array6[i].find("(")
-            w = array6[i].find(")")
-            readfile_out.write("\n + "+array06[i][0]+" "+array6[i][z:y] )
-            i=i+1
-            pass
-        
-        ##else
-        i=0
-        while i<len(array2):
-            y = array2[i].find('"')  
-            x = array2[i].find(')')  
-            readfile_out.write(("\n + "+ array2[i][0:x+1]))
-            i = i+1
-            pass
-      ##end if
-        i=0
-        while i<len(array5):
-            readfile_out.write(("\n + "+ array5[i][0]+" "+array5[i][1][0:2])+"()")
-            i = i+1
-            pass
-        ##for
-        #####################################################################################################
-        i=0
-        while i<len(array08):
-            readfile_out.write(("\n + "+ array08[i]))
-            i = i+1
-            pass"""
         self.readfile_in.close()
         readfile_out.close()
-        return Counter_Equation 
-       
+        
     
     
     
@@ -1192,6 +1023,10 @@ class ClassDiagram():
         #Stereotype
             if len(Package)==0 :
                 if len(x_array)>0:
+                    if x_array[0] == 'class':
+                        stereotyp.append(x_array)
+                        classname = " class "+stereotyp[0][1] + " << " +stereotyp[0][0] + " >>  {"
+                        return classname
                     if x_array[0] == 'function':
                         stereotyp.append(x_array)
                         classname = " class "+stereotyp[0][1] + " << " +stereotyp[0][0] + " >>  {"
@@ -1241,6 +1076,10 @@ class ClassDiagram():
             ##for Replaceable Packages or Models
             if len(Package)>0:
                 if len(x_array)>0:
+                    if x_array[0] == 'class':
+                        stereotyp.append(x_array)
+                        classname= "package "+ Package[0].replace('"',"") +"{ \n"+ "class "+stereotyp[0][1] + " << " +stereotyp[0][0]+ " >>  {"
+                        return classname
                     if x_array[0] == 'function':
                         stereotyp.append(x_array)
                         classname= "package "+ Package[0].replace('"',"") +"{ \n"+ "class "+stereotyp[0][1] + " << " +stereotyp[0][0]+ " >>  {"

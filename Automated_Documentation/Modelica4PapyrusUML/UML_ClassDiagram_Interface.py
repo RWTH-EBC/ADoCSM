@@ -83,17 +83,19 @@ class UML_ClassDiagram_Interface():
                     ModelList.append(Model)
                     readfile_out.write(ModelHeader)
                     continue
-                """if len(enumList)==1:
+                if len(enumList)==1:
                         if x_array[0]=='}' and len(ClassCounter)==1:
-                            ClassCounter = []
-                            enumList = []
+                            print(line)
+                            #ClassCounter = []
+                            #enumList = []
+                            enumList.append("Text")
                         else:    
                             line = line.replace(",","")
                             Literal = '     <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="'+str(counter)+'" name="'+line.replace('"','&quot;')
                             Literal      =Literal.replace("\n","") +'"/>'
                             NumberLines = Instanz.NumberofLines(filename_output)
-                            Instanz.insert_line(filename_output,NumberLines-1,"\n"+Literal)
-                            print(Literal)"""
+                            #Instanz.insert_line(filename_output,NumberLines-1,"\n"+Literal)
+                            readfile_out.write("\n"+Literal)
                 
                 ####Attributes
                 ##Public    
@@ -468,23 +470,27 @@ class UML_ClassDiagram_Interface():
                     
                 ##Operation
                 if x_array[0] =="+" and line.find("(")>-1:
-                    print(line)
-                    if x_array[1].find("(")>-1:
-                        continue
-                    else:
-                        
-                        Operation = '      <ownedOperation xmi:type="uml:Operation" xmi:id="'+str(counter)+'" name="'+x_array[1]+'" visibility="public">'
-                        
-                        
-                        #<ownedOperation xmi:type="uml:Operation" xmi:id="90" name="dp">
-                        #<ownedParameter xmi:type="uml:Parameter" xmi:id="_TVXu4OHzEeig0ogs4PqciQ" name="port_a.p">
-                        #<type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EFloatObject"/>
-                        #</ownedParameter>
-                        #</ownedOperation>
-                
-                        #readfile_out.write("\n"+Operation)
-                        continue
-                
+                    if len(enumList) != 2: 
+                     
+                        if x_array[1].find("(")>-1:
+                            continue
+                        else:
+                            x = line.find("+")
+                            y = line.find("(")
+                           
+                            Operation = '      <ownedOperation xmi:type="uml:Operation" xmi:id="'+str(counter)+'" name="'+line[x+2:y]+'" visibility="public"/>'
+                            #    print(Operation)
+                            readfile_out.write("\n"+Operation)
+                            
+                            #<ownedOperation xmi:type="uml:Operation" xmi:id="90" name="dp">
+                            #<ownedParameter xmi:type="uml:Parameter" xmi:id="_TVXu4OHzEeig0ogs4PqciQ" name="port_a.p">
+                            #<type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EFloatObject"/>
+                            #</ownedParameter>
+                            #</ownedOperation>
+                    
+                            #readfile_out.write("\n"+Operation)
+                            continue
+                    
              
                 
                 
@@ -602,8 +608,10 @@ class UML_ClassDiagram_Interface():
                 
                 if x_array[0]=="}" and len(ClassCounter)==1:
                     ClassCounter = []
+                    enumList = []
                     readfile_out.write('\n    </packagedElement>')
                     continue
+                
                 #if counter == Lines:
                  #   readfile_out.write('\n    </uml:Model>')
                   #  readfile_out.write('\n</xmi:XMI>')
@@ -817,10 +825,10 @@ class UML_ClassDiagram_Interface():
                  
 
 
-filename_input = r"C:\Users\hinack\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen\Gesamt\Ventil2.java"       
+filename_input = r"C:\Users\sven-\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen\Gesamt\Ventil2.java"       
 
-filename_output = r"C:\Users\hinack\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen\Gesamt\UML\UML.txt"
-filename_output2 = r"C:\Users\hinack\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen\Gesamt\UML\UML.uml"
+filename_output = r"C:\Users\sven-\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen\Gesamt\UML\UML.txt"
+filename_output2 = r"C:\Users\sven-\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen\Gesamt\UML\UML.uml"
 Instanz = UML_ClassDiagram_Interface()
 
 if __name__ == "__main__":

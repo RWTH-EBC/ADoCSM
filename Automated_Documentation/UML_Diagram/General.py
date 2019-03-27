@@ -13,6 +13,7 @@ class Class_Converter():
         self.RelationModel = self.RelationModel[len(self.RelationModel) - 1]
         RelationModel = self.RelationModel
         filename_output = DataCheck.set_filename_output(filename_input, output_path, Aixlib_path, RelationModel)
+       
         readfile_in = open(filename_input, 'r')
         tempFilename_output = DataCheck.set_tempFilename_output(output_path, filename_input, Aixlib_path, RelationModel)
         readfile_out = open(filename_output, "w")
@@ -416,6 +417,7 @@ class DataCheck():
         return tempFilename_output
        
     def set_filename_output(self, filename_input, output_path, Aixlib_path, RelationModel): 
+        print(filename_input)
         Library = DataCheck.allModelicaLibrary(Aixlib_path)
         filename_output = filename_input.split(".")
         filename_output = filename_output[0].split("\\")
@@ -434,7 +436,13 @@ class DataCheck():
             StringList = StringList + str(x) + "."
         T = StringList.split(".")
         T = T[len(T) - 1]
+    
+        
         filename_output = output_path + "\\" + "tempdata\\" + StringList + ".java"
+        #P = output_path + "\\" + "tempdata\\" + StringList
+        #if not os.path.exists(P):
+        #os.makedirs(P)
+        #print(filename_output)
         return filename_output
     
     def filename_exist(self, filename_input):

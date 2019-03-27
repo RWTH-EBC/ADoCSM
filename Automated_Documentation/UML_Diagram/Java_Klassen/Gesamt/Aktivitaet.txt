@@ -1,0 +1,12 @@
+
+
+Class PowerFlowCoefficient << model >>  {
+ + (if  ( powMod == Types.PowerModels.ShanweiEtAl2005 )  then P[1] = opening*AVal/ ( dCle^2 ) ;P[2] =  ( pInl-pOut ) /Medium.fluidConstants[1].criticalPressure;P[3] =  ( Medium.fluidConstants[1].criticalTemperature-273.15 ) / max  (    (  satInl.Tsat - Medium.temperature  (  staInl )  ) ,0.01 ) ;P[4] = Medium.bubbleDensity ( satInl ) /Medium.density ( staOut ) ;P[5] =  ( Medium.bubbleDensity ( satOut ) /Medium.density ( staOut ) - 1 ) /   (  Medium.bubbleDensity  (  satOut ) /Medium.dewDensity  (  satOut )  - 1 ) ;corFact = 1;)
+ + (elseif  ( powMod == Types.PowerModels.ZhifangAndOu2008 )  then P[1] =  ( pInl-pOut ) *1e-3*sqrt ( abs ( opening*AVal )  ) / max  (  Medium.surfaceTension  (  satInl ) ,1e-6 ) ) (P[2] = dInlPip*sqrt ( abs ( Medium.density ( staInl ) *pInl*1e-3 )  ) / Medium.dynamicViscosity  (  staInl ) ;) (corFact = 1;)
+ + (elseif  ( powMod == Types.PowerModels.Li2013 )  then P[1] = opening) (P[2] =  ( satInl.Tsat - Medium.temperature ( staInl )  ) /   (  Medium.fluidConstants[1].criticalTemperature-273.15 ) ;) (corFact = 1;) (else assert  (  false,;) (end if ;;)
+ + (else assert  (  false, "Invalid choice of power approach" ) ;)
+ + (end if ;)
+ + satInl (Medium.setSat_p(pInl))
+ + satOut (Medium.setSat_p(pOut))
+ + C (corFact * a * product(abs(P[i])^b[i] for i in 1:nT))
+}

@@ -1,0 +1,1 @@
+            *riseTime)) if filteredOpening

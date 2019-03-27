@@ -107,7 +107,7 @@ class Ui_MainWindow(QWidget):
         
         self.HierachyEbene = QtWidgets.QSpinBox(self)
         self.HierachyEbene.setGeometry(QtCore.QRect(200, 100, 200, 20))
-        self.HierachyEbene.setObjectName("Hierachy Ebene")
+        self.HierachyEbene.setObjectName("hierarchy level")
         self.HierachyEbene.valueChanged.connect(self.Hierchy)
         
         self.textBrowser = QtWidgets.QTextBrowser(self)
@@ -218,7 +218,7 @@ class Ui_MainWindow(QWidget):
         font.setPointSize(12)
         
         
-        self.label_6 = QtWidgets.QLabel("Hierarchie Ebene",self)
+        self.label_6 = QtWidgets.QLabel("Hierarchy level",self)
         self.label_6.setGeometry(QtCore.QRect(250, 80, 111, 16))
         
         font = QtGui.QFont()
@@ -321,7 +321,11 @@ class Ui_MainWindow(QWidget):
         HierarchyLevel = window.Hierchy()
         if HierarchyLevel == 0:
             HierarchyLevel = 1
-       
+        #filename_input = r"C:\Users\hinack\Dropbox\09_Modelica_Library\AixLib\Fluid\Actuators\Valves\ExpansionValves\SimpleExpansionValves\IsenthalpicExpansionValve.mo"
+        #output_path =  r"C:\Users\\sven hinrichs\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen"
+        #finalData = r"C:\Users\sven hinrichs\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen\Gesamt\Ventil.java"
+#
+        #AixLib_path=r"C:\Users\sven hinrichs\Dropbox\09_Modelica_Library"
         text = self.gettext_combobox()
         if text == "Class Diagram":
             try:
@@ -510,7 +514,7 @@ class Ui_MainWindow(QWidget):
         self.pushButton_4.setText(_translate("MainWindow", "Browse"))
         self.pushButton_5.setText(_translate("MainWindow", "Browse"))
         self.label_3.setText(_translate("MainWindow", "UML Diagram"))
-        self.label_6.setText(_translate("MainWindow", "Hierarchie Ebene"))
+        self.label_6.setText(_translate("MainWindow", "hierarchy level"))
         #self.pushButton_6.setText(_translate("MainWindow", "Browse"))
         self.menuDiagram_Generator.setTitle(_translate("MainWindow", "File"))
         self.menuOptions.setTitle(_translate("MainWindow", "Options"))

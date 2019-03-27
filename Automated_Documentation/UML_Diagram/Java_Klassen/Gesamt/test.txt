@@ -1,0 +1,16 @@
+@startuml
+start
+if (powMod ==  Types.PowerModels.ShanweiEtAl2005)  then (yes)
+:P[1] = opening*AVal/ ( dCle^2 );
+:P[2] =  ( pInl-pOut ) /Medium.fluidConstants[1].criticalPressure;
+:P[3] =  ( Medium.fluidConstants[1].criticalTemperature-273.15 ) / max  (    (  satInl.Tsat - Medium.temperature  (  staInl )  ) ,0.01 ) ;
+elseif (powMod == Types.PowerModels.ZhifangAndOu2008) then (yes)
+:P[1] = opening);
+:P[2] =  ( satInl.Tsat - Medium.temperature ( staInl )  ) /   (  Medium.fluidConstants[1].criticalTemperature-273.15 ) ;
+elseif ( powMod == Types.PowerModels.Li2013) then (yes)
+:P[1] = opening) ;
+else (assert)    
+:false, "Invalid choice of power approach"  ;
+endif
+stop
+@enduml 

@@ -119,6 +119,7 @@ class UMLClassDiagram_MainInterface():
                     Package = []
                     i= i.split(",")
                     if len(i)==3:
+                      
                         filename_input = i[0] 
                         RelationModel = i[1]
                         Package.append(i[2])
@@ -127,6 +128,7 @@ class UMLClassDiagram_MainInterface():
                         RelationModel = i[1]
                     DataCheck.filename_exist(filename_input) #Check if the file exists
                     filename_input  = ClassConverter.Model_Converter(filename_input,output_path,RelationModel,AixLib_path) #Formats the file and outputs the file  
+                   
                     ##Sets the class with parameters, variables, methods, .., in PlantUML Syntax
                     T = ClassDiagram.put_full_class(filename_input,output_path,parameter,variables,primitivevariables,complexvariables,methode,Package,showPackages,Relation,showconstant,showType)  
                     Package = []
@@ -380,16 +382,14 @@ class UMLClassDiagram_MainInterface():
     ###############################################################################################################################################################################################
     def sort(self,finalData): 
         readfile_in = open(finalData,"r")
-        #readfile_out = open(r"C:\Users\sven hinrichs\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen\Gesamt\Ventil2.java","w")
-        readfile_out = open(finalData,"w")
-        
+        readfile_out = open(r"C:\Users\sven-\Desktop\Doku\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen\Gesamt\Ventil2.java","w")
         RelationList = []
         for line in readfile_in.readlines():
             x = line.split()
             x_array = np.asarray(x)
             #if x_array[0]=="package":
             #    x_array[1]=
-                
+             
             if line.find("<|--")>-1 or line.find("--*")>-1 or line.find("<|..")>-1 or line.find("@enduml")>-1:
                 RelationList.append(line)#
             else:
@@ -444,22 +444,26 @@ class UMLClassDiagram_MainInterface():
             
 
 if __name__ == "__main__":
-    filename_input= r"C:\Users\\sven hinrichs\Dropbox\09_Modelica_Library\AixLib\Fluid\Actuators\Valves\ExpansionValves\SimpleExpansionValves\IsenthalpicExpansionValve.mo"
-    #filename_input=r"C:\Users\hinack\Dropbox\09_Modelica_Library\AixLib\Fluid\Actuators\Valves\ExpansionValves\Examples\MassFlowRateChoke.mo"
+    #filename_input=r"C:\Users\sven-\Desktop\AixLib-master\AixLib\Fluid\Actuators\Valves\ExpansionValves\SimpleExpansionValves\MetaExpansionValve.mo"
+    #filename_input=r"C:\Users\sven hinrichs\Dropbox\09_Modelica_Library\AixLib\Fluid\Actuators\Valves\ExpansionValves\SimpleExpansionValves\ExpansionValveChoke.mo"
+    #filename_input= r"C:\Users\sven-\Dropbox\09_Modelica_Library\AixLib\Fluid\Actuators\Valves\ExpansionValves\SimpleExpansionValves\IsenthalpicExpansionValve.mo"
     #filename_input =     r"C:\users\sven-\Dropbox\09_Modelica_Library\AixLib\Fluid\BoilerCHP\Boiler.mo"
-      
-    #filename_input= r"C:\Users\sven-\Dropbox\09_Modelica_Library\AixLib\Fluid\Actuators\Valves\ExpansionValves\SimpleExpansionValves\FlowExpansionValve.mo"
-    
     #filename_input=r"C:\Users\sven-\Dropbox\09_Modelica_Library\AixLib\Fluid\HeatExchangers\ConstantEffectiveness.mo"
-    #filename_input = r"C:\Users\sven-\Dropbox\09_Modelica_Library\AixLib\Fluid\BoilerCHP\Boiler.mo"   
+     
     #filename_input = r"C:\Users\sven-\Dropbox\09_Modelica_Library\AixLib\Fluid\HeatPumps\Calibration\ScrollWaterToWater.mo"
     #filename_input=r"C:\Users\sven-\Dropbox\09_Modelica_Library\AixLib\Fluid\FixedResistances\Junction.mo"
     #filename_input=r"C:\Users\sven-\Dropbox\09_Modelica_Library\AixLib\Fluid\Actuators\Motors\IdealMotor.mo"
     #filename_output= r"C:\Users\sven-\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen"
-    AixLib_path=r"C:\Users\\sven hinrichs\Dropbox\09_Modelica_Library"
-    output_path =  r"C:\Users\\sven hinrichs\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen"
+    #AixLib_path=r"C:\Users\sven hinrichs\Dropbox\09_Modelica_Library"
+    #output_path =  r"C:\Users\sven hinrichs\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen"
+    #Model = [filename_input]
+    #finalData = r"C:\Users\sven hinrichs\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen\Gesamt\Ventil.java"
+    filename_input= r"C:\Users\sven-\Desktop\Doku\09_Modelica_Library\AixLib\Fluid\Actuators\Valves\ExpansionValves\SimpleExpansionValves\IsenthalpicExpansionValve.mo"
+    AixLib_path=r"C:\Users\sven-\Desktop\Doku\09_Modelica_Library"
+    output_path =  r"C:\Users\sven-\Desktop\Doku\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen"
     Model = [filename_input]
-    finalData = r"C:\Users\\sven hinrichs\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen\Gesamt\Ventil.java"
+    finalData = r"C:\Users\sven-\Desktop\Doku\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen\Gesamt\Ventil.java"
+    
     
     parameter = False
     variables = False
@@ -468,9 +472,10 @@ if __name__ == "__main__":
     primitivevariables= False
     methode = False
     complexvariables = False 
-    HierarchyLevel = 5
+    HierarchyLevel = 10
+    
     block = False
-    showPackages = True 
+    showPackages = False 
     showconstant = False
     showType = False
     
@@ -482,7 +487,7 @@ if __name__ == "__main__":
     DataCheck.Appender(output_path, finalData)
     Instanz.test(finalData,0,"@startuml{")    
     Instanz.test(finalData,Instanz.test2(finalData), " \n @enduml")  
-    #Instanz.sort(finalData)
+    Instanz.sort(finalData)
     #Instanz.delelteTypeRelation(r"C:\Users\hinack\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen\Gesamt\Ventil2.java")
     #t= output_path+"\\"+"TempData"
     #shutil.rmtree(t)
