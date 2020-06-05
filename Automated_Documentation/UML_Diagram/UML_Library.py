@@ -2,23 +2,25 @@
 #DAnn Relation und ganzen Attribute8#
 #In GUI einbauen
 #packages in packages noch beachten
-from UML_Diagram import General
-from UML_Diagram import Object_Oriented_Relations
-from UML_Diagram import ClassDiagram
-from UML_Diagram import UML_Interface
+from General import Class_Converter
+from General import DataCheck
+from Object_Oriented_Relations import Relation
+from ClassDiagram import *
+from UML_Interface import *
 import os
 import shutil
 
-ClassConverter = General.Class_Converter()
-Realtion =  Object_Oriented_Relations.Relation()
-DataCheck = General.DataCheck
-ClassDiagram = ClassDiagram.ClassDiagram()
-UML_Interface = UML_Interface.UMLClassDiagram_MainInterface()
+#ClassConverter = Class_Converter()
+#Realtion =  Relation()
+#DataCheck = DataCheck()
+#ClassDiagram = ClassDiagram.ClassDiagram()
+#UML_Interface = UML_Interface.UMLClassDiagram_MainInterface()
 
 
 
 class UMLLibraryClassDiagram():
     
+	# List and visualise a package in a library
     def Library_Interface(self,filename_input,output_path,AixLib_path,HierarchyLevel,parameter,variables,primitivevariables,complexvariables,methode,block,showPackages,Relation,showconstant,showType):
         Package = []
         Model1 = []
@@ -32,7 +34,11 @@ class UMLLibraryClassDiagram():
             f=output_path+"\\"+f
             if os.path.isfile(f):
                 os.remove(f)
-        if HierarchyLevel>0:
+        
+		##Hierarchy Level 1
+		###############################################################################################################################################################################################
+		
+		if HierarchyLevel>0:
             RelationModel = filename_input.split(".")
             RelationModel = RelationModel[0].split("\\")
             RelationModel = RelationModel[len(RelationModel)-1]
@@ -56,7 +62,10 @@ class UMLLibraryClassDiagram():
                 ClassDiagram.put_full_class(PackageList[i],output_path,parameter,variables,primitivevariables,complexvariables,methode,Package,showPackages,Relation,showconstant,showType)
                 Model1.append(PackageList[i])
                 continue
-        if HierarchyLevel>1:
+        
+		##Hierarchy Level 2
+		###############################################################################################################################################################################################
+		if HierarchyLevel>1:
             for w in range(0,len(Model1),1):
                 for i in Realtion.get_Relation(Model1[w],AixLib_path,block):
                     PackageList = []
@@ -69,16 +78,11 @@ class UMLLibraryClassDiagram():
                     else:
                         filename_input = i[0] 
                         RelationModel = i[1]
-                   
                     RelationModel = filename_input.split(".")
                     RelationModel = RelationModel[0].split("\\")
                     RelationModel = RelationModel[len(RelationModel)-1]
-                   
                     T = ClassConverter.Model_Converter(filename_input,output_path,RelationModel,AixLib_path)
-                    
-                 
                     S = DataCheck.getPackagesinPackages(T , output_path)
-                   
                     S = (S[0].split("\\"))
                     PackageName = S[len(S)-1].split(".")
                     count = 0
@@ -91,8 +95,7 @@ class UMLLibraryClassDiagram():
                         count = count +1 
                     Package.append(xstr)
                     PackageList = DataCheck.set_ModelsinPackages(T , output_path)
-                    
-                    for i in range(0,len(PackageList),1):
+						for i in range(0,len(PackageList),1):
                         DataCheck.filename_exist(PackageList[i])
                         ClassDiagram.put_full_class(PackageList[i],output_path,parameter,variables,primitivevariables,complexvariables,methode,Package,showPackages,Relation,showconstant,showType)
                         Model2.append(PackageList[i])
@@ -100,7 +103,8 @@ class UMLLibraryClassDiagram():
                             for z in Realtion.set_Relation(PackageList[i], AixLib_path):
                                 ClassDiagram.insert_line(PackageList[i],output_path,ClassDiagram.number_of_lines(PackageList[i],output_path)-1,"\n"+z+"\n" )
                                 continue
-            
+        ##Hierarchy Level 3
+		###############################################################################################################################################################################################
         if HierarchyLevel>2:
             for w in range(0,len(Model2),1):
                 for i in Realtion.get_Relation(Model2[w],AixLib_path,block):
@@ -114,16 +118,11 @@ class UMLLibraryClassDiagram():
                     else:
                         filename_input = i[0] 
                         RelationModel = i[1]
-                   
                     RelationModel = filename_input.split(".")
                     RelationModel = RelationModel[0].split("\\")
                     RelationModel = RelationModel[len(RelationModel)-1]
-                   
                     T = ClassConverter.Model_Converter(filename_input,output_path,RelationModel,AixLib_path)
-                    
-                 
                     S = DataCheck.getPackagesinPackages(T , output_path)
-                   
                     S = (S[0].split("\\"))
                     PackageName = S[len(S)-1].split(".")
                     count = 0
@@ -136,7 +135,6 @@ class UMLLibraryClassDiagram():
                         count = count +1 
                     Package.append(xstr)
                     PackageList = DataCheck.set_ModelsinPackages(T , output_path)
-                    
                     for i in range(0,len(PackageList),1):
                         DataCheck.filename_exist(PackageList[i])
                         ClassDiagram.put_full_class(PackageList[i],output_path,parameter,variables,primitivevariables,complexvariables,methode,Package,showPackages,Relation,showconstant,showType)
@@ -145,8 +143,9 @@ class UMLLibraryClassDiagram():
                             for z in Realtion.set_Relation(PackageList[i], AixLib_path):
                                 ClassDiagram.insert_line(PackageList[i],output_path,ClassDiagram.number_of_lines(PackageList[i],output_path)-1,"\n"+z+"\n" )
                                 continue
-             
-        if HierarchyLevel>3:
+		##Hierarchy Level 4
+		###############################################################################################################################################################################################
+		if HierarchyLevel>3:
             for w in range(0,len(Model3),1):
                 for i in Realtion.get_Relation(Model3[w],AixLib_path,block):
                     PackageList = []
@@ -159,16 +158,11 @@ class UMLLibraryClassDiagram():
                     else:
                         filename_input = i[0] 
                         RelationModel = i[1]
-                   
                     RelationModel = filename_input.split(".")
                     RelationModel = RelationModel[0].split("\\")
                     RelationModel = RelationModel[len(RelationModel)-1]
-                   
                     T = ClassConverter.Model_Converter(filename_input,output_path,RelationModel,AixLib_path)
-                    
-                 
                     S = DataCheck.getPackagesinPackages(T , output_path)
-                   
                     S = (S[0].split("\\"))
                     PackageName = S[len(S)-1].split(".")
                     count = 0
@@ -181,7 +175,6 @@ class UMLLibraryClassDiagram():
                         count = count +1 
                     Package.append(xstr)
                     PackageList = DataCheck.set_ModelsinPackages(T , output_path)
-                    
                     for i in range(0,len(PackageList),1):
                         DataCheck.filename_exist(PackageList[i])
                         ClassDiagram.put_full_class(PackageList[i],output_path,parameter,variables,primitivevariables,complexvariables,methode,Package,showPackages,Relation,showconstant,showType)
@@ -190,8 +183,9 @@ class UMLLibraryClassDiagram():
                             for z in Realtion.set_Relation(PackageList[i], AixLib_path):
                                 ClassDiagram.insert_line(PackageList[i],output_path,ClassDiagram.number_of_lines(PackageList[i],output_path)-1,"\n"+z+"\n" )
                                 continue
-                         
-        if HierarchyLevel>4:
+        ##Hierarchy Level 4
+		###############################################################################################################################################################################################
+		if HierarchyLevel>4:
             for w in range(0,len(Model4),1):
                 for i in Realtion.get_Relation(Model4[w],AixLib_path,block):
                     PackageList = []
@@ -204,16 +198,11 @@ class UMLLibraryClassDiagram():
                     else:
                         filename_input = i[0] 
                         RelationModel = i[1]
-                   
                     RelationModel = filename_input.split(".")
                     RelationModel = RelationModel[0].split("\\")
                     RelationModel = RelationModel[len(RelationModel)-1]
-                   
                     T = ClassConverter.Model_Converter(filename_input,output_path,RelationModel,AixLib_path)
-                    
-                 
                     S = DataCheck.getPackagesinPackages(T , output_path)
-                   
                     S = (S[0].split("\\"))
                     PackageName = S[len(S)-1].split(".")
                     count = 0
@@ -226,7 +215,6 @@ class UMLLibraryClassDiagram():
                         count = count +1 
                     Package.append(xstr)
                     PackageList = DataCheck.set_ModelsinPackages(T , output_path)
-                    
                     for i in range(0,len(PackageList),1):
                         DataCheck.filename_exist(PackageList[i])
                         ClassDiagram.put_full_class(PackageList[i],output_path,parameter,variables,primitivevariables,complexvariables,methode,Package,showPackages,Relation,showconstant,showType)
@@ -235,7 +223,9 @@ class UMLLibraryClassDiagram():
                             for z in Realtion.set_Relation(PackageList[i], AixLib_path):
                                 ClassDiagram.insert_line(PackageList[i],output_path,ClassDiagram.number_of_lines(PackageList[i],output_path)-1,"\n"+z+"\n" )
                                 continue
-        if HierarchyLevel>5:
+        ##Hierarchy Level 5
+		###############################################################################################################################################################################################
+		if HierarchyLevel>5:
             for w in range(0,len(Model5),1):
                 for i in Realtion.get_Relation(Model5[w],AixLib_path,block):
                     PackageList = []
@@ -248,16 +238,11 @@ class UMLLibraryClassDiagram():
                     else:
                         filename_input = i[0] 
                         RelationModel = i[1]
-                   
                     RelationModel = filename_input.split(".")
                     RelationModel = RelationModel[0].split("\\")
                     RelationModel = RelationModel[len(RelationModel)-1]
-                   
                     T = ClassConverter.Model_Converter(filename_input,output_path,RelationModel,AixLib_path)
-                    
-                 
                     S = DataCheck.getPackagesinPackages(T , output_path)
-                   
                     S = (S[0].split("\\"))
                     PackageName = S[len(S)-1].split(".")
                     count = 0
@@ -270,21 +255,13 @@ class UMLLibraryClassDiagram():
                         count = count +1 
                     Package.append(xstr)
                     PackageList = DataCheck.set_ModelsinPackages(T , output_path)
-                    
                     for i in range(0,len(PackageList),1):
                         DataCheck.filename_exist(PackageList[i])
                         ClassDiagram.put_full_class(PackageList[i],output_path,parameter,variables,primitivevariables,complexvariables,methode,Package,showPackages,Relation,showconstant,showType)
-                        #Model3.append(PackageList[i])
                         if Relation == True:
                             for z in Realtion.set_Relation(PackageList[i], AixLib_path):
                                 ClassDiagram.insert_line(PackageList[i],output_path,ClassDiagram.number_of_lines(PackageList[i],output_path)-1,"\n"+z+"\n" )
                                 continue
-                    
-                    
-                    
-                  
-                      
-                   
                     
                     """
                     
@@ -347,10 +324,10 @@ class UMLLibraryClassDiagram():
                         
                         
                         
-              
+        ##Append all files in a final Data
         DataCheck.Appender(output_path, finalData)
-        UML_Interface.test(finalData,0,"@startuml{")    
-        UML_Interface.test(finalData,UML_Interface.test2(finalData), " \n @enduml")  
+        UML_Interface.start_end_syntax(finalData,0,"@startuml{")    
+        UML_Interface.start_end_syntax(finalData,UML_Interface.test2(finalData), " \n @enduml")  
         UML_Interface.sort(finalData)
         #
         #print(PackageList)
@@ -365,36 +342,31 @@ class UMLLibraryClassDiagram():
 
 
 
-filename_input =r"C:\Users\hinack\Dropbox\09_Modelica_Library\Modelica\Fluid\Valves.mo"
-#filename_input=  r"C:\Users\sven-\Dropbox\09_Modelica_Library\Modelica\Blocks\Interfaces.mo"
-
-AixLib_path=r"C:\Users\hinack\Dropbox\09_Modelica_Library"
-output_path =  r"C:\Users\hinack\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen"
-finalData = r"C:\Users\hinack\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen\Gesamt\Ventil.java"
-
-parameter = False
-variables = False
-
-Relation = False
-
-Medium = False
-primitivevariables= False
-methode = False
-complexvariables = False
-HierarchyLevel = 2
-block = False
-showPackages = False 
-showconstant = False
-showType = False
-Package =  []
 
 
 
 
 
-Instanz = UMLLibraryClassDiagram()
+
 if __name__ == "__main__":
-        
-     Instanz.Library_Interface(filename_input,output_path,AixLib_path,HierarchyLevel,parameter,variables,primitivevariables,complexvariables,methode,block,showPackages,Relation,showconstant,showType)
-    # for w in range(1,10,1):
-     #   print(type(w))
+	filename_input =r"C:\Users\hinack\Dropbox\09_Modelica_Library\Modelica\Fluid\Valves.mo"
+	AixLib_path=r"C:\Users\hinack\Dropbox\09_Modelica_Library"
+	output_path =  r"C:\Users\hinack\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen"
+	finalData = r"C:\Users\hinack\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen\Gesamt\Ventil.java"
+	parameter = False
+	variables = False
+	Relation = False
+	Medium = False
+	primitivevariables= False
+	methode = False
+	complexvariables = False
+	HierarchyLevel = 10
+	block = False
+	showPackages = False 
+	showconstant = False
+	showType = False
+	Package =  []
+      
+	Instanz = UMLLibraryClassDiagram()
+    Instanz.Library_Interface(filename_input,output_path,AixLib_path,HierarchyLevel,parameter,variables,primitivevariables,complexvariables,methode,block,showPackages,Relation,showconstant,showType)
+    

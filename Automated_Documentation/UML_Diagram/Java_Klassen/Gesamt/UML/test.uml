@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Modelica4SysML="http:///schemas/Modelica4SysML/_Oq8REN7HEeicI-a70S-euA/2" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/Modelica4SysML/_Oq8REN7HEeicI-a70S-euA/2 Modelica4SysML.profile.uml#_Oq8REd7HEeicI-a70S-euA"> 
+ <uml:Model xmi:id="_8BnUYN6YEeigT7NLOUUnfg" name="PayprusUMLTest" viewpoint="">
+
+    <packagedElement xmi:type="uml:Class" xmi:id="PartialFlowCoefficient_ID" name="PartialFlowCoefficient" visibility="public">
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="PartialExpansionValve_ID" name="PartialExpansionValve" visibility="public">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Association122" name="RealPassThrough" type="RealPassThrough_ID" aggregation="composite" association="assocationID122">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon122" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon123" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Association119" name="Filter" type="Filter_ID" aggregation="composite" association="assocationID119">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon119" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon120" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Association116" name="RealOutput" type="RealOutput_ID" aggregation="composite" association="assocationID116">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon116" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon117" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Association113" name="RealInput" type="RealInput_ID" aggregation="composite" association="assocationID113">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon113" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon114" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Association104" name="CalcProc" type="CalcProc_ID" aggregation="composite" association="assocationID104">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon104" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon105" value="*"/>
+    </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="PartialIsenthalpicExpansionValve_ID" name="PartialIsenthalpicExpansionValve" visibility="public">
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="IsenthalpicExpansionValve_ID" name="IsenthalpicExpansionValve" visibility="public">
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="CalcProc_ID" name="CalcProc" visibility="public">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Compositon106" name="PartialExpansionValve" type="PartialExpansionValve_ID">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Association122" name="RealPassThrough" type="RealPassThrough_ID" aggregation="composite" association="assocationID122">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon122" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon123" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Association119" name="Filter" type="Filter_ID" aggregation="composite" association="assocationID119">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon119" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon120" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Association116" name="RealOutput" type="RealOutput_ID" aggregation="composite" association="assocationID116">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon116" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon117" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Association113" name="RealInput" type="RealInput_ID" aggregation="composite" association="assocationID113">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon113" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon114" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Association104" name="CalcProc" type="CalcProc_ID" aggregation="composite" association="assocationID104">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon104" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon105" value="*"/>
+    </ownedAttribute>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon107"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon108" value="1"/>
+     </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="ConstantFlowCoefficient_ID" name="ConstantFlowCoefficient" visibility="public">
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="PartialTwoPort_ID" name="PartialTwoPort" visibility="public">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Association137" name="FluidPort_a" type="FluidPort_a_ID" aggregation="composite" association="assocationID137">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon137" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon138" value="*"/>
+    </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="PartialTwoPortTransport_ID" name="PartialTwoPortTransport" visibility="public">
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="FluidPort_ID" name="FluidPort" visibility="public">
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="FluidPort_a_ID" name="FluidPort_a" visibility="public">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Compositon139" name="PartialTwoPort" type="PartialTwoPort_ID">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Association137" name="FluidPort_a" type="FluidPort_a_ID" aggregation="composite" association="assocationID137">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon137" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon138" value="*"/>
+    </ownedAttribute>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon140"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon141" value="1"/>
+     </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="FluidPort_b_ID" name="FluidPort_b" visibility="public">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="Compositon142" name="PartialTwoPort" type="PartialTwoPort_ID">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Compositon143"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Compositon144" value="1"/>
+     </ownedAttribute>
+    </packagedElement>

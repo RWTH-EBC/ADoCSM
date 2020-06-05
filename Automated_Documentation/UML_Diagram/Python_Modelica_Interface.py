@@ -7,30 +7,22 @@ import pandas as pd
 import collections
 from pathlib import Path
 import numpy as np
-"""for line in readfile_in.readlines():
-        x = line.split()
-        x_array = np.asarray(x)"""
 
-
+## Search and set Interitance in plantuml syntax
 class Inheritance():
 
     # Gibt mir die Vererbungen im filename_input wieder
     def set_inheritance(filename_input):
         readfile_in = open(filename_input, 'r+')
         array0 = []
-       
         for line in readfile_in.readlines():
-          
             x = line.split()
             x_array = np.asarray(x)
-            
             if len(x_array) > 0:
                 if x_array[0] == "extends":
                     array0.append(x_array)
-                    # print(array0)
                     y = array0[0][1].split('.')
                     y = np.asarray(y)
-                         
                     ExtendedModel = y[len(y) - 1].split(';')
                     ExtendedModel = ExtendedModel[0].split("(") 
                     ExtendedModel = ExtendedModel[0]
@@ -48,25 +40,18 @@ class Inheritance():
         for line in readfile_in.readlines():
             x = line.split()
             x_array = np.asarray(x)
-            
-            # print(x_array)
             if len(x_array) > 0:
                 if x_array[0] == "extends":
                     array0.append(x_array)
-                    
                     y = array0[0][1].split('.')
                     y = np.asarray(y)
-                    # print(y)     
                     ExtendedModel = y[len(y) - 1].split(';')
                     ExtendedModel = ExtendedModel[0].split("(") 
                     ExtendedModel = ExtendedModel[0]
-                    # print(ExtendedModel)
-                                       
                     inheritance = ExtendedModel + "<|--" + mainModel
                     return inheritance
         
     def set_polymorpishm(filename_input): 
-        
         readfile_in = open(filename_input, 'r+')
         array0 = []                          
         for line in readfile_in.readlines():
@@ -75,15 +60,11 @@ class Inheritance():
             if len(x_array) > 0:
                 if  x_array[0] == "replaceable" and x_array[1] == "model":
                     array0.append(x_array)
-                    # print(array0)
-                    
                     y = array0[0][1].split('.')
                     y = np.asarray(y)
-                         
                     polymorpishmmodel = y[len(y) - 1].split(';')
                     polymorpishmmodel = polymorpishmmodel[0].split("(") 
                     polymorpishmmodel = polymorpishmmodel[0]
-                   # print(polymorpishmmodel)
                     pass  
                 pass
             pass        

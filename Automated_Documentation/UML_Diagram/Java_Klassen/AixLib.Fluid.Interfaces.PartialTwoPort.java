@@ -4,6 +4,7 @@
 
 
  Class PartialTwoPort << partial >>  {
+ + parameter Boolean allowFlowReversal = true 
 }
 
 Modelica.Media.Interfaces.PartialMedium <|..-up "Medium"PartialTwoPort

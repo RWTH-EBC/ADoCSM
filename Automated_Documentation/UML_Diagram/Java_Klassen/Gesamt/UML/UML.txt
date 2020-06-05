@@ -1,4 +1,4 @@
-@startuml{
+@startuml
 
 
 
@@ -48,79 +48,9 @@ enum     CalcProc << type >> {
 
 
 
-Class PolynomialFlowCoefficient << model >>  {
-}
-
-
-
-
-
-
-Class PowerFlowCoefficient << model >>  {
-}
-
-
-
-
-package Utilities.FlowCoefficient.SpecifiedFlowCoefficients{ 
-
-Class Buck_R22R407CR410A_EEV_15_22 << model >>  {
-}
-}
-
-
-
-
-package Utilities.FlowCoefficient.SpecifiedFlowCoefficients{ 
-
-Class Buck_R22R407CR410A_EEV_16_18 << model >>  {
-}
-}
-
-
-
-
-
-
 package Utilities.FlowCoefficient.SpecifiedFlowCoefficients{ 
 
 Class ConstantFlowCoefficient << model >>  {
-}
-}
-
-
-
-
-package Utilities.FlowCoefficient.SpecifiedFlowCoefficients{ 
-
-Class Poly_R22R407CR410A_EEV_15_22 << model >>  {
-}
-}
-
-
-
-
-package Utilities.FlowCoefficient.SpecifiedFlowCoefficients{ 
-
-Class Poly_R22_EEV_16 << model >>  {
-}
-}
-
-
-
-
-package Utilities.FlowCoefficient.SpecifiedFlowCoefficients{ 
-
-Class Poly_R407c_EEV_18 << model >>  {
-}
-}
-
-
-
-
-package Utilities.FlowCoefficient.SpecifiedFlowCoefficients{ 
-
-Class Power_R134a_EEV_15 << model >>  {
 }
 }
 
@@ -142,78 +72,6 @@ Class Power_R134a_EEV_15 << model >>  {
  Class PartialTwoPortTransport << partial >>  {
 }
 
-
-
-
-
-
-Class Filter << block >>  {
-}
-
-Internal <..-down "<<import>>"Filter
-
-
-
-
-
-
-
-
-
-
- Class Block << partial >>  {
-}
-
-
-
-
-
-interface RealInput << connector >>  {
-}
-
-
-
-
-
-interface RealOutput << connector >>  {
-}
-
-
-
-
-
- Class SISO << partial >>  {
-}
-
-
-
-
-
-
-Class RealPassThrough << model >>  {
-}
-
-
-
-
-
-
-enum     AnalogFilter << type >> {
-}
-
-
-
-
-
-enum     FilterType << type >> {
-}
-
-
-
-
-
-enum     Init << type >> {
-}
 
 
 
@@ -270,31 +128,7 @@ PartialExpansionValve <|---up PartialIsenthalpicExpansionValve
 PartialIsenthalpicExpansionValve <|---up IsenthalpicExpansionValve
 
 
-PartialFlowCoefficient <|---up PolynomialFlowCoefficient
-
-
-PartialFlowCoefficient <|---up PowerFlowCoefficient
-
-
-PowerFlowCoefficient <|---up Buck_R22R407CR410A_EEV_15_22
-
-
-PowerFlowCoefficient <|---up Buck_R22R407CR410A_EEV_16_18
-
-
 PartialFlowCoefficient <|---up ConstantFlowCoefficient
-
-
-PolynomialFlowCoefficient <|---up Poly_R22R407CR410A_EEV_15_22
-
-
-PolynomialFlowCoefficient <|---up Poly_R22_EEV_16
-
-
-PolynomialFlowCoefficient <|---up Poly_R407c_EEV_18
-
-
-PowerFlowCoefficient <|---up Power_R134a_EEV_15
 
 
 Modelica.Media.Interfaces.PartialMedium <|..-up "Medium"PartialTwoPort
@@ -307,27 +141,6 @@ FluidPort_b -down--* "port_b"PartialTwoPort
 
 
 PartialTwoPort <|---up PartialTwoPortTransport
-
-
-SISO <|---up Filter
-
-
-AnalogFilter -down--* "analogFilter"Filter
-
-
-FilterType -down--* "filterType"Filter
-
-
-Init -down--* "init"Filter
-
-
-RealOutput -down--* "x[nx]"Filter
-
-
-Block <|---up SISO
-
-
-SISO <|---up RealPassThrough
 
 
 Modelica.Media.Interfaces.PartialMedium <|..-up "Medium"FluidPort

@@ -248,7 +248,7 @@ color = {0,128,255},
 visible = showDesignFlowDirection),
 Text ( 
 extent = {{-149,-114},{151,-154}},
-lineColor = {0,0,255},
+textColor = {0,0,255},
 textString = "%name"),
 Ellipse ( 
 extent = {{-110,26},{-90,-24}},
@@ -282,9 +282,9 @@ annotation(Dialog(tab = "Advanced",group = "Diagnostics"));
 Medium.MassFlowRate m_flow ( 
 min = if allowFlowReversal then -Modelica.Constants.inf else 0,
 start  =  m_flow_start) "Mass flow rate in design flow direction";
-Modelica.SIunits.Pressure dp(start = dp_start)
+SI.Pressure dp(start = dp_start)
 "Pressure difference between port_a and port_b ( =  port_a.p - port_b.p)";
-Modelica.SIunits.VolumeFlowRate V_flow = 
+SI.VolumeFlowRate V_flow = 
 m_flow/Modelica.Fluid.Utilities.regStep ( m_flow,
 Medium.density ( state_a),
 Medium.density ( state_b),
@@ -303,8 +303,8 @@ Medium.temperature ( Medium.setState_phX ( port_b.p, port_b.h_outflow, port_b.Xi
 m_flow_small )  if show_T
 "Temperature close to port_b, if show_T  =  true";
 protected
-Medium.ThermodynamicState state_a "state for medium inflowing through port_a";
-Medium.ThermodynamicState state_b "state for medium inflowing through port_b";
+Medium.ThermodynamicState state_a "State for medium inflowing through port_a";
+Medium.ThermodynamicState state_b "State for medium inflowing through port_b";
 equation
 state_a  =  Medium.setState_phX(port_a.p, inStream(port_a.h_outflow), inStream(port_a.Xi_outflow));
 state_b  =  Medium.setState_phX(port_b.p, inStream(port_b.h_outflow), inStream(port_b.Xi_outflow));
@@ -485,7 +485,8 @@ quantity = Medium.extraPropertiesNames)  =  Medium.C_default
 "Start value of trace substances"
 annotation (Dialog(tab = "Initialization", enable = Medium.nC > 0));
 Medium.BaseProperties medium ( 
-preferredMediumStates = true,
+preferredMediumStates  =  (if energyDynamics  =  =  Dynamics.SteadyState and
+massDynamics    =  =  Dynamics.SteadyState then false else true),
 p(start = p_start),
 h(start = h_start),
 T(start = T_start),
@@ -611,7 +612,7 @@ min = if allowFlowReversal then -Modelica.Constants.inf else 0,
 start  =  m_flow_start,
 stateSelect  =  if momentumDynamics  =  =  Types.Dynamics.SteadyState then StateSelect.default else
 StateSelect.prefer ) 
-"mass flow rates between states";
+"Mass flow rates between states";
 parameter Modelica.Fluid.Types.Dynamics momentumDynamics = system.momentumDynamics
 "Formulation of momentum balance"
 annotation(Dialog(tab = "Assumptions", group = "Dynamics"), Evaluate = true);
@@ -855,7 +856,7 @@ each min = if allowFlowReversal then -Modelica.Constants.inf else 0,
 each start  =  m_flow_start,
 each stateSelect  =  if momentumDynamics  =  =  Types.Dynamics.SteadyState then StateSelect.default else
 StateSelect.prefer ) 
-"mass flow rates between states";
+"Mass flow rates between states";
 parameter Modelica.Fluid.Types.Dynamics momentumDynamics = system.momentumDynamics
 "Formulation of momentum balance"
 annotation(Dialog(tab = "Assumptions", group = "Dynamics"), Evaluate = true);
@@ -909,11 +910,11 @@ Medium.reference_X )  "Medium state to compute dp_small";
 Medium.Density d_a
 "Density at port_a when fluid is flowing from port_a to port_b";
 Medium.Density d_b
-"If allowFlowReversal = true then Density at port_b when fluid is flowing from port_b to port_a else d_a";
+"If allowFlowReversal = true then density at port_b when fluid is flowing from port_b to port_a else d_a";
 Medium.DynamicViscosity eta_a
 "Dynamic viscosity at port_a when fluid is flowing from port_a to port_b";
 Medium.DynamicViscosity eta_b
-"If allowFlowReversal = true then Dynamic viscosity at port_b when fluid is flowing from port_b to port_a else eta_a";
+"If allowFlowReversal = true then dynamic viscosity at port_b when fluid is flowing from port_b to port_a else eta_a";
 equation
 port_a.h_outflow  =  inStream(port_b.h_outflow);
 port_b.h_outflow  =  inStream(port_a.h_outflow);
@@ -941,7 +942,7 @@ to the development branch of Modelica 2.2.2.</li>
 by Francesco Casella: restructured after 45th Design Meeting.</li>
 <li><em>Nov. 20-21, 2002</em>
 by Hilding Elmqvist, Mike Tiller, Allan Watson, John Batteh, Chuck Newman,
-Jonas Eborn: Improved at the 32nd Modelica Design Meeting.
+Jonas Eborn: Improved at the 32nd Modelica Design Meeting.</li>
 <li><em>Nov. 11, 2002</em>
 by Hilding Elmqvist, Martin Otter: improved version.</li>
 <li><em>Nov. 6, 2002</em>

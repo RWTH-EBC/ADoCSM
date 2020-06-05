@@ -1,0 +1,508 @@
+
+@startuml{
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Class PartialFlowCoefficient << partial >>  {
+
+
+ + replaceable package Medium = Modelica.Media.R134a.R134a_ph constrainedby Modelica.Media.Interfaces.PartialTwoPhaseMedium 
+
+
+}
+
+
+
+
+
+Modelica.Media.R134a.R134a_ph <|.. "Medium"PartialFlowCoefficient
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Class PartialExpansionValve << partial >>  {
+
+
+ + replaceable model FlowCoefficient = Utilities.FlowCoefficient.SpecifiedFlowCoefficients.ConstantFlowCoefficient constrainedby Coefficient.PartialFlowCoefficient 
+
+
+ + extends AixLib.Fluid.Interfaces.PartialTwoPortTransport  {   redeclare replaceable package Medium = Modelica.Media.Interfaces.PartialTwoPhaseMedium, show_T = false, show_V_flow = false, dp_start = 1e6, m_flow_start = 0.5*m_flow_nominal, m_flow_small = 1e-6*m_flow_nominal } 
+
+
+ + FlowCoefficient flowCoefficient  {   redeclare package Medium = Medium, opening = opening, AVal = AVal, dInlPip = dInlPip, staInl = staInl, staOut = staOut, pInl = pInl, pOut = pOut }  
+
+
+}
+
+
+
+
+
+ConstantFlowCoefficient <|.. "FlowCoefficient"PartialExpansionValve
+
+
+
+
+
+PartialTwoPortTransport <|-- PartialExpansionValve
+
+
+
+
+
+RealInput *-- "manVarVal"PartialExpansionValve
+
+
+
+
+
+RealOutput *-- "curManVarVal"PartialExpansionValve
+
+
+
+
+
+Filter *-- "filterOpening"PartialExpansionValve
+
+
+
+
+
+RealPassThrough *-- "openingThrough"PartialExpansionValve
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Class PartialIsenthalpicExpansionValve << partial >>  {
+
+
+}
+
+
+
+
+
+PartialExpansionValve <|-- PartialIsenthalpicExpansionValve
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Class IsenthalpicExpansionValve << model >>  {
+
+
+}
+
+
+
+
+
+PartialIsenthalpicExpansionValve <|-- IsenthalpicExpansionValve
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package Utilities.FlowCoefficient.SpecifiedFlowCoefficients{ 
+
+
+
+
+
+Class ConstantFlowCoefficient << model >>  {
+
+
+}
+
+
+}
+
+
+
+
+
+PartialFlowCoefficient <|-- ConstantFlowCoefficient
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Class PartialTwoPort << partial >>  {
+
+
+ + replaceable package Medium = Modelica.Media.Interfaces.PartialMedium 
+
+
+ + Modelica.Fluid.Interfaces.FluidPort_a port_a  {   redeclare final package Medium = Medium, m_flow { min=if allowFlowReversal then -Modelica.Constants.inf else 0 } , h_outflow { start = Medium.h_default, nominal = Medium.h_default }  }  
+
+
+ + Modelica.Fluid.Interfaces.FluidPort_b port_b  {   redeclare final package Medium = Medium, m_flow { max=if allowFlowReversal then +Modelica.Constants.inf else 0 } , h_outflow { start = Medium.h_default, nominal = Medium.h_default }  }  
+
+
+}
+
+
+
+
+
+Modelica.Media.Interfaces.PartialMedium <|.. "Medium"PartialTwoPort
+
+
+
+
+
+FluidPort_a *-- "port_a"PartialTwoPort
+
+
+
+
+
+FluidPort_b *-- "port_b"PartialTwoPort
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Class PartialTwoPortTransport << partial >>  {
+
+
+}
+
+
+
+
+
+PartialTwoPort <|-- PartialTwoPortTransport
+
+
+
+
+
+
+
+
+
+
+
+package Utilities.FlowCoefficient.SpecifiedFlowCoefficients{ 
+
+
+
+
+
+Class Buck_R22R407CR410A_EEV_15_22 << model >>  {
+
+
+ + extends PowerFlowCoefficient  {   final powMod=Types.PowerModels.ShanweiEtAl2005, final a=0.2343, final b={0.0281,0.0260,-0.0477,-0.1420,-0.1291}, final dCle=0.02e-3 } 
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+package Utilities.FlowCoefficient.SpecifiedFlowCoefficients{ 
+
+
+
+
+
+Class Buck_R22R407CR410A_EEV_16_18 << model >>  {
+
+
+ + extends PowerFlowCoefficient  {   final powMod=Types.PowerModels.Li2013, final a=1.066, final b={0.8006,0.0609}, final pDifRat=0.84 } 
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+package Utilities.FlowCoefficient.SpecifiedFlowCoefficients{ 
+
+
+
+
+
+Class ConstantFlowCoefficient << model >>  {
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+interface FluidPort_a << connector >>  {
+
+
+}
+
+
+
+
+
+FluidPort <|-- FluidPort_a
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+interface FluidPort_b << connector >>  {
+
+
+}
+
+
+
+
+
+FluidPort <|-- FluidPort_b
+
+
+
+
+
+
+
+
+
+
+
+package Utilities.FlowCoefficient.SpecifiedFlowCoefficients{ 
+
+
+
+
+
+Class Poly_R22R407CR410A_EEV_15_22 << model >>  {
+
+
+ + extends PolynomialFlowCoefficient  {   final polyMod=Types.PolynomialModels.ShanweiEtAl2005, final a={-1.615e4,3.328e-4,1.4465e-3,2.9968e-3,-3.3890e2,7.0925e-5}, final b={1,1,1,1,1,1}, final dCle=0.02e-3 } 
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+package Utilities.FlowCoefficient.SpecifiedFlowCoefficients{ 
+
+
+
+
+
+Class Poly_R22_EEV_16 << model >>  {
+
+
+ + extends PolynomialFlowCoefficient  {   final polyMod=Types.PolynomialModels.Li2013, final a={-0.03469,1.64866,-0.84227,1.19513,0,0}, final b={1,1,1,1,1,1}, final pDifRat=0.84 } 
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+package Utilities.FlowCoefficient.SpecifiedFlowCoefficients{ 
+
+
+
+
+
+Class Poly_R407c_EEV_18 << model >>  {
+
+
+ + extends PolynomialFlowCoefficient  {   final polyMod=Types.PolynomialModels.Li2013, final a={-0.07154,1.67713,-0.79141,1.09516,0,0}, final b={1,1,1,1,1,1}, final pDifRat=0.84 } 
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+package Utilities.FlowCoefficient.SpecifiedFlowCoefficients{ 
+
+
+
+
+
+Class Power_R134a_EEV_15 << model >>  {
+
+
+ + extends PowerFlowCoefficient  {   final powMod=Types.PowerModels.ZhifangAndOu2008, final a=1.1868e-13, final b={-1.4347,3.6426} } 
+
+
+}
+
+
+}
+
+
+ 
+
+
+ @enduml
+
+@enduml

@@ -3,6 +3,6 @@
 
 
 
-enum     CalcProc << type >> {
+enum	 CalcProc << type >> {
 }
 @enduml

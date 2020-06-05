@@ -37,8 +37,6 @@ class ActivityDiagram():
 
 
 
-Instanz = ActivityDiagram() 
-filename_output = r"C:\Users\hinack\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen\Gesamt\AktivitaetPlantUML.txt"
-filename_input =  r"C:\Users\hinack\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen\Gesamt\Aktivitaet.txt"
 if __name__ == "__main__":  
-    Instanz.ActivityDiagram_UML(filename_input, filename_output)
+    Instanz = ActivityDiagram() 
+	Instanz.ActivityDiagram_UML(filename_input, filename_output)

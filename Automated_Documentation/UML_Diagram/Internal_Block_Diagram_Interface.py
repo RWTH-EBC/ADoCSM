@@ -12,6 +12,8 @@ DataCheck = General.DataCheck
 ClassDiagram = ClassDiagram.ClassDiagram()
 UML_Interface = UML_Interface.UMLClassDiagram_MainInterface()
 
+### Visualise a Internal_Block_Diagram
+
 class Internal_Block_Diagram_Interface():
     
     def Internal_Block_Diagram(self,filename_input,output_path,AixLib_path,HierarchyLevel,parameter,variables,primitivevariables,complexvariables,methode,block,showPackages,Relation,showconstant,showType):
@@ -162,11 +164,11 @@ Instanz = Internal_Block_Diagram_Interface()
 
 
 if __name__ == "__main__":
-    filename_input= r"C:\Users\sven-\Desktop\Doku\09_Modelica_Library\AixLib\Fluid\Actuators\Valves\ExpansionValves\SimpleExpansionValves\IsenthalpicExpansionValve.mo"
-    AixLib_path=r"C:\Users\sven-\Desktop\Doku\09_Modelica_Library"
-    output_path =  r"C:\Users\sven-\Desktop\Doku\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen"
+    filename_input= r"C:\Users\hinack\Dropbox\09_Modelica_Library\AixLib\Fluid\Actuators\Valves\ExpansionValves\Examples\MassFlowRateChoke.mo"
+    AixLib_path=r"C:\Users\hinack\Dropbox\09_Modelica_Library"
+    output_path =  r"C:\Users\hinack\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen"
     Model = [filename_input]
-    finalData = r"C:\Users\sven-\Desktop\Doku\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen\Gesamt\Ventil.java"
+    finalData = r"C:\Users\hinack\Dropbox\08_Eclipse_Workspace_Automated_Documentation\Automated_Documentation\UML_Diagram\Java_Klassen\Gesamt\Ventil.java"
     parameter = True    
     variables = False
     Relation = False
@@ -174,16 +176,18 @@ if __name__ == "__main__":
     primitivevariables= False
     methode = False
     complexvariables = False
-    HierarchyLevel = 1
+    HierarchyLevel = 10
     block =   True  
     showPackages = True 
     showconstant = False
     showType = True
     showConnect = True
-    
     Instanz.Internal_Block_Diagram(filename_input, output_path, AixLib_path, HierarchyLevel, parameter, variables, primitivevariables, complexvariables, methode, block, showPackages, Relation, showconstant, showType)
     UML_Interface.test(finalData,0,"@startuml{")    
     UML_Interface.test(finalData,UML_Interface.test2(finalData), " \n @enduml") 
+    
+    
+    
     print("Conversion Succsesfull!")
                     
                     

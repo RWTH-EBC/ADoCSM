@@ -38,7 +38,7 @@ parameter Boolean port_a_exposesState  =  false " =  true if port_a exposes the 
 
 parameter Boolean port_b_exposesState  =  false " =  true if port_b.p exposes the state of a fluid volume";
 parameter Boolean showDesignFlowDirection  =  true " =  false to hide the arrow in the model icon";
-annotation   (   Documentation ( info = "<html> <p> This partial model defines an interface for components with two ports. The treatment of the design flow direction and of flow reversal are predefined based on the parameter <code><strong>allowFlowReversal</strong></code>. The component may transport fluid and may have internal storage for a given fluid <code><strong>Medium</strong></code>. </p> <p> An extending model providing direct access to internal storage of mass or energy through port_a or port_b should redefine the protected parameters <code><strong>port_a_exposesState</strong></code> and <code><strong>port_b_exposesState</strong></code> appropriately. This will be visualized at the port icons, in order to improve the understanding of fluid model diagrams. </p> </html>"  )  , Icon  (  coordinateSystem  (   preserveAspectRatio = true, extent = {{-100,-100},{100,100}} ) , graphics = { Polygon  (   points = {{20,-70},{60,-85},{20,-100},{20,-70}}, lineColor = {0,128,255}, fillColor = {0,128,255}, fillPattern = FillPattern.Solid, visible = showDesignFlowDirection ) , Polygon  (   points = {{20,-75},{50,-85},{20,-95},{20,-75}}, lineColor = {255,255,255}, fillColor = {255,255,255}, fillPattern = FillPattern.Solid, visible = allowFlowReversal ) , Line  (   points = {{55,-85},{-60,-85}}, color = {0,128,255}, visible = showDesignFlowDirection ) , Text  (   extent = {{-149,-114},{151,-154}}, lineColor = {0,0,255}, textString = "%name" ) , Ellipse  (   extent = {{-110,26},{-90,-24}}, fillPattern = FillPattern.Solid, visible = port_a_exposesState ) , Ellipse  (   extent = {{90,25},{110,-25}}, fillPattern = FillPattern.Solid, visible = port_b_exposesState ) } )  ) ;
+annotation   (   Documentation ( info = "<html> <p> This partial model defines an interface for components with two ports. The treatment of the design flow direction and of flow reversal are predefined based on the parameter <code><strong>allowFlowReversal</strong></code>. The component may transport fluid and may have internal storage for a given fluid <code><strong>Medium</strong></code>. </p> <p> An extending model providing direct access to internal storage of mass or energy through port_a or port_b should redefine the protected parameters <code><strong>port_a_exposesState</strong></code> and <code><strong>port_b_exposesState</strong></code> appropriately. This will be visualized at the port icons, in order to improve the understanding of fluid model diagrams. </p> </html>"  )  , Icon  (  coordinateSystem  (   preserveAspectRatio = true, extent = {{-100,-100},{100,100}} ) , graphics = { Polygon  (   points = {{20,-70},{60,-85},{20,-100},{20,-70}}, lineColor = {0,128,255}, fillColor = {0,128,255}, fillPattern = FillPattern.Solid, visible = showDesignFlowDirection ) , Polygon  (   points = {{20,-75},{50,-85},{20,-95},{20,-75}}, lineColor = {255,255,255}, fillColor = {255,255,255}, fillPattern = FillPattern.Solid, visible = allowFlowReversal ) , Line  (   points = {{55,-85},{-60,-85}}, color = {0,128,255}, visible = showDesignFlowDirection ) , Text  (   extent = {{-149,-114},{151,-154}}, textColor = {0,0,255}, textString = "%name" ) , Ellipse  (   extent = {{-110,26},{-90,-24}}, fillPattern = FillPattern.Solid, visible = port_a_exposesState ) , Ellipse  (   extent = {{90,25},{110,-25}}, fillPattern = FillPattern.Solid, visible = port_b_exposesState ) } )  ) ;
 end PartialTwoPort;
 partial model PartialTwoPortTransport "Partial element transporting fluid between two ports without storage of mass or energy"
 extends PartialTwoPort  (   final port_a_exposesState = false, final port_b_exposesState = false ) 
@@ -48,14 +48,14 @@ parameter Medium.MassFlowRate m_flow_small  =  if system.use_eps_Re then system.
 parameter Boolean show_T  =  true " =  true, if temperatures at port_a and port_b are computed" annotation ( Dialog ( tab = "Advanced",group = "Diagnostics" )  ) ;
 parameter Boolean show_V_flow  =  true " =  true, if volume flow rate at inflowing port is computed" annotation ( Dialog ( tab = "Advanced",group = "Diagnostics" )  ) ;
 Medium.MassFlowRate m_flow  (   min = if allowFlowReversal then -Modelica.Constants.inf else 0, start  =  m_flow_start )  "Mass flow rate in design flow direction";
-Modelica.SIunits.Pressure dp ( start = dp_start )  "Pressure difference between port_a and port_b  (  =  port_a.p - port_b.p ) ";
-Modelica.SIunits.VolumeFlowRate V_flow =  m_flow/Modelica.Fluid.Utilities.regStep  (  m_flow, Medium.density  (  state_a ) , Medium.density  (  state_b ) , m_flow_small  )   if show_V_flow "Volume flow rate at inflowing port   (  positive when flow from port_a to port_b ) ";
+SI.Pressure dp ( start = dp_start )  "Pressure difference between port_a and port_b  (  =  port_a.p - port_b.p ) ";
+SI.VolumeFlowRate V_flow =  m_flow/Modelica.Fluid.Utilities.regStep  (  m_flow, Medium.density  (  state_a ) , Medium.density  (  state_b ) , m_flow_small  )   if show_V_flow "Volume flow rate at inflowing port   (  positive when flow from port_a to port_b ) ";
 Medium.Temperature port_a_T =  Modelica.Fluid.Utilities.regStep  (  port_a.m_flow, Medium.temperature  (  state_a ) , Medium.temperature  (  Medium.setState_phX  (  port_a.p, port_a.h_outflow, port_a.Xi_outflow )  ) , m_flow_small  )   if show_T "Temperature close to port_a, if show_T  =  true";
 Medium.Temperature port_b_T =  Modelica.Fluid.Utilities.regStep  (  port_b.m_flow, Medium.temperature  (  state_b ) , Medium.temperature  (  Medium.setState_phX  (  port_b.p, port_b.h_outflow, port_b.Xi_outflow )  ) , m_flow_small  )   if show_T "Temperature close to port_b, if show_T  =  true";
 protected
-Medium.ThermodynamicState state_a "state for medium inflowing through port_a"
+Medium.ThermodynamicState state_a "State for medium inflowing through port_a"
 
-Medium.ThermodynamicState state_b "state for medium inflowing through port_b";
+Medium.ThermodynamicState state_b "State for medium inflowing through port_b";
 equation
 state_a  =  Medium.setState_phX ( port_a.p, inStream ( port_a.h_outflow ) , inStream ( port_a.Xi_outflow )  ) 
 
@@ -114,7 +114,7 @@ parameter Medium.Temperature T_start =  if use_T_start then system.T_start else 
 parameter Medium.SpecificEnthalpy h_start =  if use_T_start then Medium.specificEnthalpy_pTX  (  p_start, T_start, X_start )  else Medium.h_default "Start value of specific enthalpy" annotation ( Dialog ( tab  =  "Initialization", enable  =  not use_T_start )  ) ;
 parameter Medium.MassFraction X_start[Medium.nX]  =  Medium.X_default "Start value of mass fractions m_i/m" annotation  ( Dialog ( tab = "Initialization", enable = Medium.nXi > 0 )  ) ;
 parameter Medium.ExtraProperty C_start[Medium.nC]  (   quantity = Medium.extraPropertiesNames )   =  Medium.C_default "Start value of trace substances" annotation  ( Dialog ( tab = "Initialization", enable = Medium.nC > 0 )  ) ;
-Medium.BaseProperties medium  (   preferredMediumStates = true, p ( start = p_start ) , h ( start = h_start ) , T ( start = T_start ) , Xi ( start = X_start[1:Medium.nXi] )  ) ;
+Medium.BaseProperties medium  (   preferredMediumStates  =   ( if energyDynamics  =  =  Dynamics.SteadyState and massDynamics    =  =  Dynamics.SteadyState then false else true ) , p ( start = p_start ) , h ( start = h_start ) , T ( start = T_start ) , Xi ( start = X_start[1:Medium.nXi] )  ) ;
 SI.Energy U "Internal energy of fluid";
 SI.Mass m "Mass of fluid";
 SI.Mass[Medium.nXi] mXi "Masses of independent components in the fluid";
@@ -177,7 +177,7 @@ outer Modelica.Fluid.System system "System properties"
 replaceable package Medium  =  Modelica.Media.Interfaces.PartialMedium "Medium in the component";
 parameter Boolean allowFlowReversal  =  system.allowFlowReversal " =  true to allow flow reversal, false restricts to design direction  ( m_flow > =  0 ) " annotation ( Dialog ( tab = "Assumptions" ) , Evaluate = true ) ;
 input SI.Length pathLength "Length flow path";
-Medium.MassFlowRate m_flow  (   min = if allowFlowReversal then -Modelica.Constants.inf else 0, start  =  m_flow_start, stateSelect  =  if momentumDynamics  =  =  Types.Dynamics.SteadyState then StateSelect.default else StateSelect.prefer  )   "mass flow rates between states";
+Medium.MassFlowRate m_flow  (   min = if allowFlowReversal then -Modelica.Constants.inf else 0, start  =  m_flow_start, stateSelect  =  if momentumDynamics  =  =  Types.Dynamics.SteadyState then StateSelect.default else StateSelect.prefer  )   "Mass flow rates between states";
 parameter Modelica.Fluid.Types.Dynamics momentumDynamics = system.momentumDynamics "Formulation of momentum balance" annotation ( Dialog ( tab = "Assumptions", group = "Dynamics" ) , Evaluate = true ) ;
 parameter Medium.MassFlowRate m_flow_start = system.m_flow_start "Start value of mass flow rates" annotation ( Dialog ( tab = "Initialization" )  ) ;
 SI.Momentum I "Momenta of flow segments";
@@ -292,7 +292,7 @@ replaceable package Medium  =  Modelica.Media.Interfaces.PartialMedium "Medium i
 parameter Boolean allowFlowReversal  =  system.allowFlowReversal " =  true to allow flow reversal, false restricts to design direction  ( m_flows > =  zeros ( m )  ) " annotation ( Dialog ( tab = "Assumptions" ) , Evaluate = true ) ;
 parameter Integer m = 1 "Number of flow segments";
 input SI.Length[m] pathLengths "Lengths along flow path";
-Medium.MassFlowRate[m] m_flows  (   each min = if allowFlowReversal then -Modelica.Constants.inf else 0, each start  =  m_flow_start, each stateSelect  =  if momentumDynamics  =  =  Types.Dynamics.SteadyState then StateSelect.default else StateSelect.prefer  )   "mass flow rates between states";
+Medium.MassFlowRate[m] m_flows  (   each min = if allowFlowReversal then -Modelica.Constants.inf else 0, each start  =  m_flow_start, each stateSelect  =  if momentumDynamics  =  =  Types.Dynamics.SteadyState then StateSelect.default else StateSelect.prefer  )   "Mass flow rates between states";
 parameter Modelica.Fluid.Types.Dynamics momentumDynamics = system.momentumDynamics "Formulation of momentum balance" annotation ( Dialog ( tab = "Assumptions", group = "Dynamics" ) , Evaluate = true ) ;
 parameter Medium.MassFlowRate m_flow_start = system.m_flow_start "Start value of mass flow rates" annotation ( Dialog ( tab = "Initialization" )  ) ;
 SI.Momentum[m] Is "Momenta of flow segments";
@@ -318,9 +318,9 @@ protected
 parameter Medium.ThermodynamicState state_dp_small = Medium.setState_pTX (  Medium.reference_p, Medium.reference_T, Medium.reference_X  )   "Medium state to compute dp_small"
 
 Medium.Density d_a "Density at port_a when fluid is flowing from port_a to port_b";
-Medium.Density d_b "If allowFlowReversal = true then Density at port_b when fluid is flowing from port_b to port_a else d_a";
+Medium.Density d_b "If allowFlowReversal = true then density at port_b when fluid is flowing from port_b to port_a else d_a";
 Medium.DynamicViscosity eta_a "Dynamic viscosity at port_a when fluid is flowing from port_a to port_b";
-Medium.DynamicViscosity eta_b "If allowFlowReversal = true then Dynamic viscosity at port_b when fluid is flowing from port_b to port_a else eta_a";
+Medium.DynamicViscosity eta_b "If allowFlowReversal = true then dynamic viscosity at port_b when fluid is flowing from port_b to port_a else eta_a";
 equation
 port_a.h_outflow  =  inStream ( port_b.h_outflow ) 
 
@@ -333,5 +333,5 @@ else d_b    =  d_a;
 eta_b  =  eta_a;
 end if;
 end PartialPressureLoss;
-annotation  ( Documentation ( info = "<html> </html>", revisions = "<html> <ul> <li><em>June 9th, 2008</em> by Michael Sielemann: Introduced stream keyword after decision at 57th Design Meeting   (  Lund ) .</li> <li><em>May 30, 2007</em> by Christoph Richter: moved everything back to its original position in Modelica.Fluid.</li> <li><em>Apr. 20, 2007</em> by Christoph Richter: moved parts of the original package from Modelica.Fluid to the development branch of Modelica 2.2.2.</li> <li><em>Nov. 2, 2005</em> by Francesco Casella: restructured after 45th Design Meeting.</li> <li><em>Nov. 20-21, 2002</em> by Hilding Elmqvist, Mike Tiller, Allan Watson, John Batteh, Chuck Newman, Jonas Eborn: Improved at the 32nd Modelica Design Meeting. <li><em>Nov. 11, 2002</em> by Hilding Elmqvist, Martin Otter: improved version.</li> <li><em>Nov. 6, 2002</em> by Hilding Elmqvist: first version.</li> <li><em>Aug. 11, 2002</em> by Martin Otter: Improved according to discussion with Hilding Elmqvist and Hubertus Tummescheit.<br> The PortVicinity model is manually expanded in the base models.<br> The Volume used for components is renamed PartialComponentVolume.<br> A new volume model \"Fluid.Components.PortVolume\" introduced that has the medium properties of the port to which it is connected.<br> Fluid.Interfaces.PartialTwoPortTransport is a component for elementary two port transport elements, whereas PartialTwoPort is a component for a container component.</li> </ul> </html>"  )    )  ;
+annotation  ( Documentation ( info = "<html> </html>", revisions = "<html> <ul> <li><em>June 9th, 2008</em> by Michael Sielemann: Introduced stream keyword after decision at 57th Design Meeting   (  Lund ) .</li> <li><em>May 30, 2007</em> by Christoph Richter: moved everything back to its original position in Modelica.Fluid.</li> <li><em>Apr. 20, 2007</em> by Christoph Richter: moved parts of the original package from Modelica.Fluid to the development branch of Modelica 2.2.2.</li> <li><em>Nov. 2, 2005</em> by Francesco Casella: restructured after 45th Design Meeting.</li> <li><em>Nov. 20-21, 2002</em> by Hilding Elmqvist, Mike Tiller, Allan Watson, John Batteh, Chuck Newman, Jonas Eborn: Improved at the 32nd Modelica Design Meeting.</li> <li><em>Nov. 11, 2002</em> by Hilding Elmqvist, Martin Otter: improved version.</li> <li><em>Nov. 6, 2002</em> by Hilding Elmqvist: first version.</li> <li><em>Aug. 11, 2002</em> by Martin Otter: Improved according to discussion with Hilding Elmqvist and Hubertus Tummescheit.<br> The PortVicinity model is manually expanded in the base models.<br> The Volume used for components is renamed PartialComponentVolume.<br> A new volume model \"Fluid.Components.PortVolume\" introduced that has the medium properties of the port to which it is connected.<br> Fluid.Interfaces.PartialTwoPortTransport is a component for elementary two port transport elements, whereas PartialTwoPort is a component for a container component.</li> </ul> </html>"  )    )  ;
 end Interfaces;
